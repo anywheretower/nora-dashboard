@@ -116,20 +116,5 @@ export const scripts = [
     rev: 'Banco: 139+ referencias etiquetadas',
     deps: 'Requiere: OpenRouter API key',
   },
-  {
-    id: 'upload-video',
-    title: 'upload-video.mjs',
-    badge: 'Video',
-    badgeClass: 'badge-video',
-    status: 'active',
-    cardStyle: 4,
-    description: 'Sube video renderizado a Supabase Storage y crea registro de creatividad con origen "video". Usado para publicar videos Remotion finalizados en la plataforma NORA.',
-    meta: [
-      { icon: '🔧', label: 'Uso', value: 'node upload-video.mjs --file=out/v.mp4 --marca=X --copy="..."', code: true },
-      { icon: '📋', label: 'Flags', value: '--file, --marca, --copy, --concepto (JSON)' },
-      { icon: '📦', label: 'Output', value: 'creatividad con condicion=para_revision' },
-    ],
-    rev: 'Destino: Supabase Storage + tabla creatividades',
-    deps: 'Requiere: archivo .mp4 renderizado',
-  },
+
 ]

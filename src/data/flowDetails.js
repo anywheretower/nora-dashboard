@@ -357,7 +357,7 @@ export function getFlowDetail(boxText) {
     }
   }
 
-  // Check script patterns (partial match for variants like "comfy-text2img --ratio=16:9")
+  // Check script patterns (partial match for script names in flow box text)
   for (const { pattern, scriptId } of scriptTextPatterns) {
     if (text.includes(pattern)) {
       const script = scriptMap[scriptId]
