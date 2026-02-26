@@ -106,6 +106,13 @@ const stepDetails = {
     description: 'La foto original (1104×1472) se escala a 810×1080 manteniendo proporción y se centra en un lienzo blanco de 1920×1080. ~555px blancos a cada lado. Qwen Image Edit rellena los espacios blancos con el entorno del prompt, preservando la persona/producto intacta sin deformaciones.',
     color: 'var(--flow-step-color)',
   },
+  'subir a Supabase': {
+    type: 'step',
+    title: 'Subir Video a Supabase',
+    icon: '☁️',
+    description: 'Paso MANUAL obligatorio para video pantalla. A diferencia de los scripts de imagen (que suben automáticamente), el video renderizado queda en disco local. Subir a Supabase Storage bucket creatividades y actualizar link_ren_1 + estado paso 10.',
+    color: 'var(--flow-step-color)',
+  },
   'duplicar TSX → Pantalla': {
     type: 'step',
     title: 'Reframe TSX 9:16 → 16:9',

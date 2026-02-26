@@ -97,7 +97,7 @@ export const pantallaFlows = [
     levels: {
       activador: [{ type: 'input', text: 'creatividad video aprobada' }, { type: 'input', text: 'archivo TSX Remotion' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'step', text: 'duplicar TSX → Pantalla' }, { type: 'script', text: 'remotion render 16:9' }, { type: 'script', text: 'ffmpeg mix audio' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      comfy: [{ type: 'step', text: 'duplicar TSX → Pantalla' }, { type: 'script', text: 'remotion render 16:9' }, { type: 'script', text: 'ffmpeg mix audio' }, { type: 'step', text: 'subir a Supabase' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
       qa: [{ type: 'qa', text: 'observación' }],
     },
   },
