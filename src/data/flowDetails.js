@@ -96,7 +96,21 @@ const stepDetails = {
     type: 'step',
     title: 'Resolución 1920×1080',
     icon: '📐',
-    description: 'Imagen generada en resolución real 1920×1080 (16:9) para pantallas y televisores. Scripts dedicados: comfy-text2img-pantalla.mjs y comfy-img2img-pantalla.mjs.',
+    description: 'Imagen generada en resolución real 1920×1080 (16:9) para pantallas y televisores. Script: comfy-text2img-pantalla.mjs.',
+    color: 'var(--flow-step-color)',
+  },
+  'pad blanco 1920×1080': {
+    type: 'step',
+    title: 'Pad Blanco 1920×1080',
+    icon: '📐',
+    description: 'La foto original (1104×1472) se escala a 810×1080 manteniendo proporción y se centra en un lienzo blanco de 1920×1080. ~555px blancos a cada lado. Qwen Image Edit rellena los espacios blancos con el entorno del prompt, preservando la persona/producto intacta sin deformaciones.',
+    color: 'var(--flow-step-color)',
+  },
+  'link_ren_2': {
+    type: 'step',
+    title: 'Imagen Intermedia (link_ren_2)',
+    icon: '🖼️',
+    description: 'Se guarda la imagen intermedia (persona centrada en lienzo blanco) en el campo link_ren_2 de Supabase. Permite verificar el input que recibe Qwen y diagnosticar problemas de deformación.',
     color: 'var(--flow-step-color)',
   },
   'para_revision': {

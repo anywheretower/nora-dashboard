@@ -58,10 +58,11 @@ export const scripts = [
     badgeClass: 'badge-gen',
     status: 'active',
     cardStyle: 1,
-    description: 'Edita imágenes 1920×1080 para pantallas TV. Busca creatividades Pantalla en paso 9 con url (tipo Colaborador), aplica prompt de edición en 16:9, sube a Supabase, actualiza a paso 10.',
+    description: 'Edita imágenes 1920×1080 para pantallas TV. Método pad blanco: foto original se centra en lienzo blanco 1920×1080 (sin crop/deformación), Qwen rellena espacios. Intermedia guardada en link_ren_2.',
     meta: [
       { icon: '🔧', label: 'Uso', value: 'node comfy-img2img-pantalla.mjs --once [--id=123]', code: true },
-      { icon: '📐', label: 'Dimensiones', value: '1920×1080 (16:9)' },
+      { icon: '📐', label: 'Método', value: 'Pad blanco → Qwen rellena (persona intacta)' },
+      { icon: '🖼️', label: 'Intermedia', value: 'link_ren_2 = input padded en lienzo blanco' },
       { icon: '⏱️', label: 'Tiempo', value: '~2 min/imagen' },
       { icon: '📱', label: 'Notifica', value: 'vía Telegram Bot al terminar batch' },
     ],

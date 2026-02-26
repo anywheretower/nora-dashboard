@@ -80,12 +80,12 @@ export const pantallaFlows = [
   {
     id: 'pantalla-colaborador',
     title: 'Pantalla · Colaborador',
-    subtitle: 'adapta creatividad i2i (persona) a formato horizontal 16:9',
-    note: 'Por definir · Toma foto original del colaborador + adapta prompt de edición a composición horizontal → preserva persona',
+    subtitle: 'adapta creatividad i2i (persona/producto) a formato horizontal 16:9',
+    note: 'Por definir · Foto original → pad blanco 1920×1080 (persona centrada) → Qwen rellena espacios → link_ren_2 guarda intermedia',
     levels: {
       activador: [{ type: 'input', text: 'creatividad i2i aprobada' }, { type: 'input', text: 'foto original (url)' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'script', text: 'comfy-img2img-pantalla' }, { type: 'step', text: '1920×1080' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      comfy: [{ type: 'script', text: 'comfy-img2img-pantalla' }, { type: 'step', text: 'pad blanco 1920×1080' }, { type: 'step', text: 'link_ren_2' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
       qa: [{ type: 'qa', text: 'observación' }],
     },
   },
