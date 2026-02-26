@@ -11,6 +11,7 @@ import ScriptsSection from './components/ScriptsSection'
 import SharedFiles from './components/SharedFiles'
 import SkillModal from './components/SkillModal'
 import ScrollToTop from './components/ScrollToTop'
+import Sidebar from './components/Sidebar'
 
 import {
   protocoloCard,
@@ -29,6 +30,7 @@ import {
 } from './data/skills'
 import { sharedFiles } from './data/shared'
 import { navLinks } from './data/nav'
+import { getFlowDetail } from './data/flowDetails'
 
 function App() {
   // Theme
@@ -91,13 +93,28 @@ function App() {
   // Escape key to close modal
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && modalSkillId) {
-        closeSkill()
+      if (e.key === 'Escape') {
+        if (modalSkillId) {
+          closeSkill()
+        } else if (selectedBox) {
+          setSelectedBox(null)
+        }
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [modalSkillId, closeSkill])
+  }, [modalSkillId, closeSkill, selectedBox])
+
+  // Sidebar: selected flow box
+  const [selectedBox, setSelectedBox] = useState(null)
+
+  const handleSelectBox = useCallback((boxText) => {
+    setSelectedBox(prev => prev === boxText ? null : boxText)
+  }, [])
+
+  const selectedDetail = useMemo(() => {
+    return selectedBox ? getFlowDetail(selectedBox) : null
+  }, [selectedBox])
 
   // Stats
   const skillCount = useMemo(() => {
@@ -156,9 +173,20 @@ function App() {
       />
 
       <div className="container">
-        {/* FLUJO */}
+        {/* FLUJO — Split Screen */}
         <Section id="flujo" icon="🔄" title="Flujo de trabajo" defaultOpen>
-          <FlowDiagram />
+          <div className={`app-layout${selectedBox ? ' sidebar-open' : ''}`}>
+            <div className="flow-panel">
+              <FlowDiagram selectedBox={selectedBox} onSelectBox={handleSelectBox} />
+            </div>
+            <div className="sidebar-panel">
+              <Sidebar
+                detail={selectedDetail}
+                onClose={() => setSelectedBox(null)}
+                onOpenSkill={openSkill}
+              />
+            </div>
+          </div>
         </Section>
 
         {/* PROTOCOLO */}

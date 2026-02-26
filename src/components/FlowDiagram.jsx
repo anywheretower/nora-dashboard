@@ -1,7 +1,7 @@
 import FlowRow from './FlowRow'
 import { textToImageFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlow, legend } from '../data/flows'
 
-export default function FlowDiagram() {
+export default function FlowDiagram({ selectedBox, onSelectBox }) {
   return (
     <div className="flow-diagram">
       {/* Text-to-Image section */}
@@ -12,7 +12,7 @@ export default function FlowDiagram() {
           <div className="flow-row-label">
             {flow.icon} {flow.title} <span>{flow.subtitle}</span>
           </div>
-          <FlowRow boxes={flow.boxes} />
+          <FlowRow boxes={flow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} />
           <div className="flow-note">{flow.note}</div>
         </div>
       ))}
@@ -25,7 +25,7 @@ export default function FlowDiagram() {
       <div className="flow-row-label">
         {imgToImgFlow.icon} {imgToImgFlow.title} <span>{imgToImgFlow.subtitle}</span>
       </div>
-      <FlowRow boxes={imgToImgFlow.boxes} />
+      <FlowRow boxes={imgToImgFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} />
       <div className="flow-note">{imgToImgFlow.note}</div>
 
       {/* Separator */}
@@ -37,14 +37,14 @@ export default function FlowDiagram() {
       <div className="flow-row-label">
         {videoMGFlow.icon} {videoMGFlow.title}
       </div>
-      <FlowRow boxes={videoMGFlow.boxes} />
+      <FlowRow boxes={videoMGFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} />
       <div className="flow-note">{videoMGFlow.note}</div>
 
       <div style={{ marginTop: 14 }}>
         <div className="flow-row-label" style={{ color: '#999' }}>
           {videoAIFlow.icon} {videoAIFlow.title}
         </div>
-        <FlowRow boxes={videoAIFlow.boxes} paused />
+        <FlowRow boxes={videoAIFlow.boxes} paused selectedBox={selectedBox} onSelectBox={onSelectBox} />
         <div className="flow-note" style={{ color: '#999' }}>{videoAIFlow.note}</div>
       </div>
 
@@ -56,7 +56,7 @@ export default function FlowDiagram() {
       <div className="flow-row-label">
         {marcaFlow.icon} {marcaFlow.title}
       </div>
-      <FlowRow boxes={marcaFlow.boxes} />
+      <FlowRow boxes={marcaFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} />
       <div className="flow-note" dangerouslySetInnerHTML={{ __html: marcaFlow.note }} />
 
       {/* Legend */}
