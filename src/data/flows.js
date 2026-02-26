@@ -107,11 +107,11 @@ export const imgToImgFlow = {
   id: 'producto',
   title: 'Producto / Colaborador / Interior / Exterior / Fachada',
   subtitle: 'edita imagen preservando el sujeto original',
-  note: 'Por definir · Prompt ≤600 chars · 5 orígenes · Qwen Image Edit 2511 · Genera 3:4 y 16:9',
+  note: 'Por definir · Prompt ≤600 chars · 5 orígenes · Qwen Image Edit 2511 · Solo 3:4',
   levels: {
     activador: [{ type: 'input', text: 'tabla inputs' }, { type: 'support', text: 'imagen-concepto' }],
     supabase: [{ type: 'gen', text: 'creatividad-producto' }, { type: 'step', text: 'paso 6' }, { type: 'step', text: 'paso 7' }],
-    comfy: [{ type: 'script', text: 'comfy-img2img (3:4)' }, { type: 'step', text: 'paso 8' }, { type: 'script', text: 'comfy-img2img (16:9)' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+    comfy: [{ type: 'script', text: 'comfy-img2img' }, { type: 'step', text: 'paso 8' }, { type: 'step', text: 'para_revision' }],
     qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
   },
 }
