@@ -69,7 +69,7 @@ export const pantallaFlows = [
     id: 'pantalla-imagen',
     title: 'Pantalla · Imagen',
     subtitle: 'adapta creatividad t2i existente a formato horizontal 16:9',
-    note: 'Por definir · Toma prompt de creatividad aprobada → adapta composición a horizontal → genera desde cero',
+    note: 'Validado #1484 CSJ · Toma prompt de creatividad aprobada → adapta composición a horizontal → genera 1920×1080 desde cero',
     levels: {
       activador: [{ type: 'input', text: 'creatividad t2i aprobada' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
@@ -81,7 +81,7 @@ export const pantallaFlows = [
     id: 'pantalla-colaborador',
     title: 'Pantalla · Colaborador',
     subtitle: 'adapta creatividad i2i (persona/producto) a formato horizontal 16:9',
-    note: 'Por definir · Foto original → pad blanco 1920×1080 (persona centrada) → Qwen rellena espacios → link_ren_2 guarda intermedia',
+    note: 'Validado #1485 CSJ · Foto original → pad blanco 1920×1080 (persona centrada) → Qwen rellena espacios → link_ren_2 guarda intermedia',
     levels: {
       activador: [{ type: 'input', text: 'creatividad i2i aprobada' }, { type: 'input', text: 'foto original (url)' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
@@ -93,7 +93,7 @@ export const pantallaFlows = [
     id: 'pantalla-video',
     title: 'Pantalla · Video',
     subtitle: 'reframe inteligente de video Remotion 9:16 → 16:9 (1920×1080)',
-    note: 'Por definir · Duplicar TSX → reframe layout horizontal (texto+imagen lado a lado) → fontSize -25% → render → ffmpeg mix audio',
+    note: 'Validado #1486 CSJ · Duplicar TSX → reframe layout horizontal (texto+imagen lado a lado) → fontSize -25% → render → ffmpeg mix audio',
     levels: {
       activador: [{ type: 'input', text: 'creatividad video aprobada' }, { type: 'input', text: 'archivo TSX Remotion' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
