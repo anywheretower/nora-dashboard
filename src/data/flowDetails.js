@@ -106,6 +106,13 @@ const stepDetails = {
     description: 'La foto original (1104×1472) se escala a 810×1080 manteniendo proporción y se centra en un lienzo blanco de 1920×1080. ~555px blancos a cada lado. Qwen Image Edit rellena los espacios blancos con el entorno del prompt, preservando la persona/producto intacta sin deformaciones.',
     color: 'var(--flow-step-color)',
   },
+  'duplicar TSX → Pantalla': {
+    type: 'step',
+    title: 'Reframe TSX 9:16 → 16:9',
+    icon: '📐',
+    description: 'Duplicar archivo TSX con sufijo Pantalla. Reframe inteligente: layout vertical → horizontal (texto+imagen lado a lado), fontSize -25%, maxWidth +50%, recalcular posiciones absolutas, 2 columnas para listas. Timing, efectos, colores, imágenes y audio: IDÉNTICOS al original.',
+    color: 'var(--flow-step-color)',
+  },
   'link_ren_2': {
     type: 'step',
     title: 'Imagen Intermedia (link_ren_2)',

@@ -92,12 +92,12 @@ export const pantallaFlows = [
   {
     id: 'pantalla-video',
     title: 'Pantalla · Video',
-    subtitle: 'adapta video Remotion vertical/cuadrado a formato horizontal 1920×1080',
-    note: 'Por definir · Identifica archivo TSX original → duplica con dimensiones 16:9 → adapta textos y animaciones → render',
+    subtitle: 'reframe inteligente de video Remotion 9:16 → 16:9 (1920×1080)',
+    note: 'Por definir · Duplicar TSX → reframe layout horizontal (texto+imagen lado a lado) → fontSize -25% → render → ffmpeg mix audio',
     levels: {
       activador: [{ type: 'input', text: 'creatividad video aprobada' }, { type: 'input', text: 'archivo TSX Remotion' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'script', text: 'remotion render 16:9' }, { type: 'script', text: 'ffmpeg mix audio' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      comfy: [{ type: 'step', text: 'duplicar TSX → Pantalla' }, { type: 'script', text: 'remotion render 16:9' }, { type: 'script', text: 'ffmpeg mix audio' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
       qa: [{ type: 'qa', text: 'observación' }],
     },
   },
