@@ -221,7 +221,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .flow-support { background: var(--flow-support-bg); color: var(--flow-support-color); border: 1px solid var(--flow-support-border); }
 .flow-qa { background: var(--flow-qa-bg); color: var(--flow-qa-color); border: 1px solid var(--flow-qa-border); }
 .flow-pub { background: var(--flow-pub-bg); color: var(--flow-pub-color); border: 1px solid var(--flow-pub-border); }
-.flow-step { background: var(--flow-step-bg); color: var(--flow-step-color); border: 1px solid var(--flow-step-border); }
+.flow-step { background: transparent; color: var(--flow-step-color); border: none; font-weight: 700; font-size: 0.75rem; padding: 8px 4px; }
 .flow-script { background: var(--flow-script-bg); color: var(--flow-script-color); border: 1px solid var(--flow-script-border); font-style: italic; }
 .flow-input { background: var(--flow-input-bg); color: var(--flow-input-color); border: 1px solid var(--flow-input-border); }
 .flow-video { background: var(--flow-video-bg); color: var(--flow-video-color); border: 1px solid var(--flow-video-border); }
