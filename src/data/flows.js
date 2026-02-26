@@ -73,7 +73,7 @@ export const pantallaFlows = [
     levels: {
       activador: [{ type: 'input', text: 'creatividad t2i aprobada' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img-pantalla' }, { type: 'step', text: '1920×1080' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
       qa: [{ type: 'qa', text: 'observación' }],
     },
   },
@@ -85,7 +85,7 @@ export const pantallaFlows = [
     levels: {
       activador: [{ type: 'input', text: 'creatividad i2i aprobada' }, { type: 'input', text: 'foto original (url)' }],
       supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'script', text: 'comfy-img2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      comfy: [{ type: 'script', text: 'comfy-img2img-pantalla' }, { type: 'step', text: '1920×1080' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
       qa: [{ type: 'qa', text: 'observación' }],
     },
   },

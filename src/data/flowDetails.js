@@ -92,6 +92,13 @@ const stepDetails = {
     description: 'Imagen 16:9 generada y subida. Campo link_ren_1 actualizado. Creatividad completa con ambos formatos.',
     color: 'var(--flow-step-color)',
   },
+  '1920×1080': {
+    type: 'step',
+    title: 'Resolución 1920×1080',
+    icon: '📐',
+    description: 'Imagen generada en resolución real 1920×1080 (16:9) para pantallas y televisores. Scripts dedicados: comfy-text2img-pantalla.mjs y comfy-img2img-pantalla.mjs.',
+    color: 'var(--flow-step-color)',
+  },
   'para_revision': {
     type: 'step',
     title: 'Para Revisión',
@@ -284,6 +291,8 @@ const skillTextMap = {
 
 // Script mapping: flow box text patterns → script id
 const scriptTextPatterns = [
+  { pattern: 'comfy-text2img-pantalla', scriptId: 'comfy-text2img-pantalla' },
+  { pattern: 'comfy-img2img-pantalla', scriptId: 'comfy-img2img-pantalla' },
   { pattern: 'comfy-text2img', scriptId: 'comfy-text2img' },
   { pattern: 'comfy-img2img', scriptId: 'comfy-img2img' },
 ]
