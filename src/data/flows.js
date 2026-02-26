@@ -64,18 +64,44 @@ export const textToImageFlows = [
   },
 ]
 
-export const pantallaFlow = {
-  id: 'pantalla',
-  title: 'Pantalla',
-  subtitle: 'versiones 16:9 para TVs en salas de espera',
-  note: 'Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
-  levels: {
-    activador: [{ type: 'input', text: 'prompt existente' }],
-    supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-    comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
-    qa: [{ type: 'qa', text: 'observación' }],
+export const pantallaFlows = [
+  {
+    id: 'pantalla-imagen',
+    title: 'Pantalla · Imagen',
+    subtitle: 'adapta creatividad t2i existente a formato horizontal 16:9',
+    note: 'Por definir · Toma prompt de creatividad aprobada → adapta composición a horizontal → genera desde cero',
+    levels: {
+      activador: [{ type: 'input', text: 'creatividad t2i aprobada' }],
+      supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'observación' }],
+    },
   },
-}
+  {
+    id: 'pantalla-colaborador',
+    title: 'Pantalla · Colaborador',
+    subtitle: 'adapta creatividad i2i (persona) a formato horizontal 16:9',
+    note: 'Por definir · Toma foto original del colaborador + adapta prompt de edición a composición horizontal → preserva persona',
+    levels: {
+      activador: [{ type: 'input', text: 'creatividad i2i aprobada' }, { type: 'input', text: 'foto original (url)' }],
+      supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
+      comfy: [{ type: 'script', text: 'comfy-img2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'observación' }],
+    },
+  },
+  {
+    id: 'pantalla-video',
+    title: 'Pantalla · Video',
+    subtitle: 'adapta video Remotion vertical/cuadrado a formato horizontal 1920×1080',
+    note: 'Por definir · Identifica archivo TSX original → duplica con dimensiones 16:9 → adapta textos y animaciones → render',
+    levels: {
+      activador: [{ type: 'input', text: 'creatividad video aprobada' }, { type: 'input', text: 'archivo TSX Remotion' }],
+      supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
+      comfy: [{ type: 'script', text: 'remotion render 16:9' }, { type: 'script', text: 'ffmpeg mix audio' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'observación' }],
+    },
+  },
+]
 
 export const imgToImgFlow = {
   id: 'producto',

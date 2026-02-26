@@ -1,6 +1,6 @@
 import { useMemo, useEffect } from 'react'
 import FlowCard from './FlowCard'
-import { textToImageFlows, pantallaFlow, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlows, legend } from '../data/flows'
+import { textToImageFlows, pantallaFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlows, legend } from '../data/flows'
 
 // Category definitions
 const categories = [
@@ -23,8 +23,7 @@ const categories = [
   {
     key: 'pantalla',
     label: 'Pantalla',
-    flows: [pantallaFlow],
-    autoExpand: true,
+    flows: pantallaFlows,
   },
   {
     key: 'video',

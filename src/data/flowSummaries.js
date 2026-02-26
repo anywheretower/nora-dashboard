@@ -90,12 +90,28 @@ export const flowSummaries = {
     scriptIds: ['comfy-text2img'],
   },
   'pantalla': {
-    label: '📺 Pantalla',
-    icon: '📺',
-    description: 'Versiones 16:9 para TVs en salas de espera. Recicla prompts existentes, sin iteración.',
+    label: 'Pantalla',
+    description: 'Versiones 16:9 para TVs en salas de espera. 3 sub-flujos según origen: imagen t2i, colaborador i2i, video Remotion.',
     cronSkills: ['pantalla', 'observación img'],
+    scriptIds: ['comfy-text2img', 'comfy-img2img'],
+  },
+  'pantalla-imagen': {
+    label: 'Pantalla · Imagen',
+    description: 'Toma creatividad t2i aprobada, adapta prompt a composición horizontal 16:9, genera imagen nueva.',
+    cronSkills: ['pantalla'],
     scriptIds: ['comfy-text2img'],
-    scriptNote: 'Usa comfy-text2img.mjs --ratio=16:9',
+  },
+  'pantalla-colaborador': {
+    label: 'Pantalla · Colaborador',
+    description: 'Toma creatividad i2i aprobada (colaborador/producto), usa foto original + prompt edición adaptado a 16:9.',
+    cronSkills: ['pantalla'],
+    scriptIds: ['comfy-img2img'],
+  },
+  'pantalla-video': {
+    label: 'Pantalla · Video',
+    description: 'Toma creatividad video aprobada, identifica TSX Remotion original, duplica en 1920×1080, adapta animaciones, render + mix audio.',
+    cronSkills: ['pantalla'],
+    scriptIds: [],
   },
 
   // I2I individual

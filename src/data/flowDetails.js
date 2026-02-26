@@ -166,6 +166,41 @@ const inputDetails = {
     description: 'Creatividades con condicion=resultado_final. Se analizan visualmente para extraer patrones que funcionan y mejorar las instrucciones escritas de marca (paleta, look&feel, notas, prohibido).',
     color: 'var(--flow-input-color)',
   },
+  'creatividad t2i aprobada': {
+    type: 'input',
+    title: 'Creatividad T2I Aprobada',
+    icon: '🖼️',
+    description: 'Creatividad text-to-image con condicion=resultado_final. Se toma su prompt y se adapta la composición a formato horizontal 16:9 para pantallas TV.',
+    color: 'var(--flow-input-color)',
+  },
+  'creatividad i2i aprobada': {
+    type: 'input',
+    title: 'Creatividad I2I Aprobada',
+    icon: '👤',
+    description: 'Creatividad img-to-image (colaborador/producto) con condicion=resultado_final. Se toma la foto original del sujeto y se adapta el prompt de edición a composición horizontal 16:9.',
+    color: 'var(--flow-input-color)',
+  },
+  'foto original (url)': {
+    type: 'input',
+    title: 'Foto Original del Sujeto',
+    icon: '📷',
+    description: 'Imagen original del colaborador/producto (campo url de la creatividad origen). Qwen Image Edit preserva al sujeto intacto y edita solo el entorno adaptándolo a 16:9.',
+    color: 'var(--flow-input-color)',
+  },
+  'creatividad video aprobada': {
+    type: 'input',
+    title: 'Creatividad Video Aprobada',
+    icon: '🎬',
+    description: 'Creatividad de video con condicion=resultado_final. Se identifica el archivo TSX de Remotion original para duplicarlo y adaptarlo a formato horizontal 1920×1080.',
+    color: 'var(--flow-input-color)',
+  },
+  'archivo TSX Remotion': {
+    type: 'input',
+    title: 'Archivo TSX Remotion',
+    icon: '📄',
+    description: 'Código fuente del video en React/Remotion (.tsx). Se duplica con nuevas dimensiones 1920×1080 y se adaptan textos, posiciones, tamaños de fuente y animaciones al formato horizontal.',
+    color: 'var(--flow-input-color)',
+  },
 }
 
 // Info cards for non-skill items
@@ -189,6 +224,20 @@ const infoDetails = {
     title: 'Upscale 720p',
     icon: '🔍',
     description: 'Paso de upscaling que escala el video generado por LTX-Video 2 a resolución 720p. Mejora la calidad visual del output antes de publicar.',
+    color: 'var(--flow-script-color)',
+  },
+  'remotion render 16:9': {
+    type: 'info',
+    title: 'Remotion Render 16:9',
+    icon: '🎬',
+    description: 'Renderiza el archivo TSX duplicado en formato 1920×1080 horizontal. El render sale mudo (-91 dB). Se usa npx remotion render con las nuevas dimensiones.',
+    color: 'var(--flow-script-color)',
+  },
+  'ffmpeg mix audio': {
+    type: 'info',
+    title: 'FFmpeg Mix Audio',
+    icon: '🔊',
+    description: 'Mezcla el audio original (voz + música) con el video renderizado mudo. Usa ffmpeg para combinar las pistas manteniendo sincronización.',
     color: 'var(--flow-script-color)',
   },
   'video-iteración': {
