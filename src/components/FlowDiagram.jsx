@@ -1,106 +1,191 @@
+import { useMemo, useEffect } from 'react'
 import FlowCard from './FlowCard'
-import { textToImageFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlows, legend } from '../data/flows'
+import { textToImageFlows, pantallaFlow, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlows, legend } from '../data/flows'
 
-export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, onSelectTitle, searchQuery }) {
+// Category definitions
+const categories = [
+  {
+    key: 'marca',
+    icon: '🏛️',
+    label: 'MARCA',
+    flows: marcaFlows,
+  },
+  {
+    key: 't2i',
+    icon: '🎨',
+    label: 'IMAGEN TEXT-TO-IMAGE',
+    flows: textToImageFlows,
+  },
+  {
+    key: 'i2i',
+    icon: '🔄',
+    label: 'IMAGEN IMG-TO-IMAGE',
+    flows: [imgToImgFlow],
+    autoExpand: true,
+  },
+  {
+    key: 'pantalla',
+    icon: '📺',
+    label: 'PANTALLA',
+    flows: [pantallaFlow],
+    autoExpand: true,
+  },
+  {
+    key: 'video',
+    icon: '🎬',
+    label: 'VIDEO',
+    flows: [videoMGFlow, videoAIFlow],
+  },
+]
+
+// Build a flat searchable index
+function matchesSearch(flow, q) {
+  if (!q) return true
+  const haystack = [
+    flow.id,
+    flow.title,
+    flow.subtitle || '',
+    flow.note || '',
+    ...Object.values(flow.levels).flat().map(b => b.text),
+  ].join(' ').toLowerCase()
+  return haystack.includes(q)
+}
+
+export default function FlowDiagram({
+  selectedBox, onSelectBox, selectedTitle, onSelectTitle, searchQuery,
+  expandedCategory, setExpandedCategory, expandedFlow, setExpandedFlow,
+}) {
   const q = (searchQuery || '').toLowerCase().trim()
+  const isSearching = q.length > 0
+
+  // Compute which flows match search
+  const searchMatches = useMemo(() => {
+    if (!isSearching) return null
+    const matches = new Set()
+    categories.forEach(cat => {
+      cat.flows.forEach(flow => {
+        if (matchesSearch(flow, q)) matches.add(flow.id)
+      })
+    })
+    return matches
+  }, [q, isSearching])
+
+  // Which categories have matches during search
+  const categoryHasMatch = useMemo(() => {
+    if (!searchMatches) return null
+    const result = {}
+    categories.forEach(cat => {
+      result[cat.key] = cat.flows.some(f => searchMatches.has(f.id))
+    })
+    return result
+  }, [searchMatches])
+
+  const handleCategoryClick = (catKey) => {
+    if (isSearching) return // Don't toggle during search
+    // Accordion: toggle, or close others
+    if (expandedCategory === catKey) {
+      setExpandedCategory(null)
+      setExpandedFlow(null)
+    } else {
+      setExpandedCategory(catKey)
+      setExpandedFlow(null)
+    }
+    // Also trigger sidebar summary for the category
+    onSelectTitle(catKey)
+  }
+
+  const handleFlowClick = (flowId) => {
+    if (isSearching) return // Don't toggle during search
+    if (expandedFlow === flowId) {
+      setExpandedFlow(null)
+    } else {
+      setExpandedFlow(flowId)
+    }
+    // Trigger sidebar summary for this flow
+    onSelectTitle(flowId)
+  }
+
+  // Auto-expand single-flow categories when they open
+  useEffect(() => {
+    if (!expandedCategory || isSearching) return
+    const cat = categories.find(c => c.key === expandedCategory)
+    if (cat && cat.autoExpand && cat.flows.length === 1) {
+      setExpandedFlow(cat.flows[0].id)
+    }
+  }, [expandedCategory, isSearching, setExpandedFlow])
 
   return (
     <div className="flow-diagram">
-      {/* Marca */}
-      <div
-        id="flow-marca"
-        className={`flow-section-header flow-title-clickable${selectedTitle === 'marca' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('marca')}
-      >
-        Marca
-      </div>
+      {categories.map(cat => {
+        const isCatExpanded = isSearching
+          ? (categoryHasMatch && categoryHasMatch[cat.key])
+          : expandedCategory === cat.key
+        const flowCount = cat.flows.length
+        const flowWord = flowCount === 1 ? 'flujo' : 'flujos'
 
-      {marcaFlows.map((flow) => (
-        <FlowCard
-          key={flow.id}
-          flow={flow}
-          selectedBox={selectedBox}
-          onSelectBox={onSelectBox}
-          selectedTitle={selectedTitle}
-          onSelectTitle={onSelectTitle}
-          searchQuery={q}
-        />
-      ))}
+        // During search, hide categories with no matches
+        if (isSearching && categoryHasMatch && !categoryHasMatch[cat.key]) {
+          return null
+        }
 
-      {/* Separator */}
-      <div className="flow-separator" />
+        return (
+          <div key={cat.key} className="flow-accordion-category" id={`flow-${cat.key}`}>
+            {/* Level 1 — Category header */}
+            <div
+              className={`flow-category${isCatExpanded ? ' expanded' : ''}${selectedTitle === cat.key ? ' flow-title-selected' : ''}${cat.key === 'video' ? ' video' : ''}`}
+              onClick={() => handleCategoryClick(cat.key)}
+            >
+              <span className="flow-category-chevron">{isCatExpanded ? '▼' : '▶'}</span>
+              <span className="flow-category-icon">{cat.icon}</span>
+              <span className="flow-category-label">{cat.label}</span>
+              <span className="flow-category-count">{flowCount} {flowWord}</span>
+            </div>
 
-      {/* Text-to-Image section */}
-      <div
-        id="flow-t2i"
-        className={`flow-section-header flow-title-clickable${selectedTitle === 't2i' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('t2i')}
-      >
-        Imagen Text-to-Image
-      </div>
+            {/* Level 2 — Flow titles (visible when category is expanded) */}
+            <div className={`flow-category-content${isCatExpanded ? ' open' : ''}`}>
+              {cat.flows.map(flow => {
+                const isFlowExpanded = isSearching
+                  ? (searchMatches && searchMatches.has(flow.id))
+                  : expandedFlow === flow.id
+                const paused = flow.paused || false
 
-      {textToImageFlows.map((flow) => (
-        <FlowCard
-          key={flow.id}
-          flow={flow}
-          selectedBox={selectedBox}
-          onSelectBox={onSelectBox}
-          selectedTitle={selectedTitle}
-          onSelectTitle={onSelectTitle}
-          searchQuery={q}
-        />
-      ))}
+                // During search, skip non-matching flows
+                if (isSearching && searchMatches && !searchMatches.has(flow.id)) {
+                  return null
+                }
 
-      {/* Separator */}
-      <div className="flow-separator" />
+                return (
+                  <div key={flow.id} className="flow-accordion-item">
+                    {/* Level 2 — Flow title row */}
+                    <div
+                      className={`flow-item-title${isFlowExpanded ? ' expanded' : ''}${paused ? ' paused' : ''}${selectedTitle === flow.id ? ' flow-title-selected' : ''}`}
+                      onClick={() => handleFlowClick(flow.id)}
+                    >
+                      <span className="flow-item-chevron">{isFlowExpanded ? '▼' : '▶'}</span>
+                      <span className="flow-item-icon">{flow.icon}</span>
+                      <span className="flow-item-name">{flow.title}</span>
+                      {flow.subtitle && <span className="flow-item-subtitle">{flow.subtitle}</span>}
+                      {paused && <span className="flow-item-paused-badge">⏸ Pausado</span>}
+                    </div>
 
-      {/* Img-to-Image */}
-      <div
-        id="flow-i2i"
-        className={`flow-section-header flow-title-clickable${selectedTitle === 'i2i' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('i2i')}
-      >
-        Imagen Img-to-Image
-      </div>
-
-      <FlowCard
-        flow={imgToImgFlow}
-        selectedBox={selectedBox}
-        onSelectBox={onSelectBox}
-        selectedTitle={selectedTitle}
-        onSelectTitle={onSelectTitle}
-        searchQuery={q}
-      />
-
-      {/* Separator */}
-      <div className="flow-separator" />
-
-      {/* Video */}
-      <div
-        id="flow-video"
-        className={`flow-section-header video flow-title-clickable${selectedTitle === 'video' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('video')}
-      >
-        Video
-      </div>
-
-      <FlowCard
-        flow={videoMGFlow}
-        selectedBox={selectedBox}
-        onSelectBox={onSelectBox}
-        selectedTitle={selectedTitle}
-        onSelectTitle={onSelectTitle}
-        searchQuery={q}
-      />
-
-      <FlowCard
-        flow={videoAIFlow}
-        selectedBox={selectedBox}
-        onSelectBox={onSelectBox}
-        selectedTitle={selectedTitle}
-        onSelectTitle={onSelectTitle}
-        searchQuery={q}
-      />
+                    {/* Level 3 — FlowCard detail (visible when flow is expanded) */}
+                    <div className={`flow-item-content${isFlowExpanded ? ' open' : ''}`}>
+                      <FlowCard
+                        flow={flow}
+                        selectedBox={selectedBox}
+                        onSelectBox={onSelectBox}
+                        selectedTitle={selectedTitle}
+                        onSelectTitle={onSelectTitle}
+                        searchQuery={q}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
 
       {/* Legend */}
       <div className="flow-legend">

@@ -1,19 +1,23 @@
 const flowQuickLinks = [
-  { id: 'flow-marca', label: 'Marca' },
-  { id: 'flow-t2i', label: 'T2I' },
-  { id: 'flow-i2i', label: 'I2I' },
-  { id: 'flow-row-pantalla', label: 'Pantalla' },
-  { id: 'flow-video', label: 'Video' },
+  { catKey: 'marca', label: 'Marca' },
+  { catKey: 't2i', label: 'T2I' },
+  { catKey: 'i2i', label: 'I2I' },
+  { catKey: 'pantalla', label: 'Pantalla' },
+  { catKey: 'video', label: 'Video' },
 ]
 
-export default function Nav({ searchQuery, onSearchChange }) {
+export default function Nav({ searchQuery, onSearchChange, onExpandCategory }) {
 
-  const handleClick = (e, id) => {
+  const handleClick = (e, catKey) => {
     e.preventDefault()
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (onExpandCategory) onExpandCategory(catKey)
+    // Scroll to category after a tick (to let it expand)
+    setTimeout(() => {
+      const el = document.getElementById(`flow-${catKey}`)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 50)
   }
 
   return (
@@ -27,9 +31,9 @@ export default function Nav({ searchQuery, onSearchChange }) {
       />
       {flowQuickLinks.map(link => (
         <a
-          key={link.id}
-          href={`#${link.id}`}
-          onClick={e => handleClick(e, link.id)}
+          key={link.catKey}
+          href={`#flow-${link.catKey}`}
+          onClick={e => handleClick(e, link.catKey)}
         >
           {link.label}
         </a>

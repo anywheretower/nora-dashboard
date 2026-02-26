@@ -6,8 +6,8 @@ export const flowSummaries = {
   't2i': {
     label: 'Imagen Text-to-Image',
     icon: '🖼️',
-    description: 'Pipeline completo de generación de imágenes desde texto. 6 orígenes distintos, todos pasan por prompt-master y comfy-text2img.mjs.',
-    cronSkills: ['referencia', 'original', 'universal', 'calendario', 'requerida', 'pantalla', 'iteración img', 'observación img'],
+    description: 'Pipeline completo de generación de imágenes desde texto. 5 orígenes distintos, todos pasan por prompt-master y comfy-text2img.mjs.',
+    cronSkills: ['referencia', 'original', 'universal', 'calendario', 'requerida', 'iteración img', 'observación img'],
     scriptIds: ['comfy-text2img'],
   },
   'i2i': {

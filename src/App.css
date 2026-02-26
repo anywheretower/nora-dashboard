@@ -678,6 +678,236 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
   font-size: 0.72rem;
 }
 
+/* ===================== */
+/* 3-Level Accordion     */
+/* ===================== */
+
+.flow-accordion-category {
+  margin-bottom: 2px;
+}
+
+/* Level 1 — Category header */
+.flow-category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+  border: 1px solid transparent;
+}
+
+.flow-category:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-border);
+}
+
+.flow-category.expanded {
+  background: var(--accent-light);
+  border-color: var(--accent-border);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.flow-category.flow-title-selected {
+  border-left: 3px solid var(--accent);
+}
+
+.flow-category.video {
+  /* Video category accent */
+}
+
+.flow-category-chevron {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  transition: color 0.2s;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.flow-category.expanded .flow-category-chevron {
+  color: var(--accent);
+}
+
+.flow-category-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.flow-category-label {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.flow-category-count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  background: var(--bg-nav-link);
+  padding: 2px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* Level 1 content — collapse/expand */
+.flow-category-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.flow-category-content.open {
+  max-height: 3000px;
+  opacity: 1;
+  transition: max-height 0.5s ease, opacity 0.3s ease 0.05s;
+}
+
+/* Level 2 — Flow title row */
+.flow-accordion-item {
+  border-left: 2px solid var(--border-light);
+  margin-left: 22px;
+}
+
+.flow-item-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+  margin: 1px 0;
+}
+
+.flow-item-title:hover {
+  background: var(--accent-light);
+}
+
+.flow-item-title.expanded {
+  background: var(--accent-light);
+}
+
+.flow-item-title.flow-title-selected {
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  padding-left: 11px;
+}
+
+.flow-item-title.paused {
+  opacity: var(--paused-opacity);
+}
+
+.flow-item-title.paused:hover {
+  opacity: 0.7;
+}
+
+.flow-item-chevron {
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  width: 12px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.flow-item-title.expanded .flow-item-chevron {
+  color: var(--accent);
+}
+
+.flow-item-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.flow-item-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.flow-item-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.flow-item-paused-badge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--paused-badge-color);
+  background: var(--paused-badge-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* Level 2 content — collapse/expand */
+.flow-item-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  opacity: 0;
+  margin-left: 16px;
+  padding-left: 8px;
+}
+
+.flow-item-content.open {
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.4s ease, opacity 0.3s ease 0.05s;
+  padding-top: 4px;
+  padding-bottom: 8px;
+}
+
+/* Remove top margin from FlowCard when inside accordion */
+.flow-item-content .flow-card-wrap {
+  margin-bottom: 0;
+}
+
+/* Mobile adjustments for accordion */
+@media (max-width: 768px) {
+  .flow-category {
+    padding: 12px 12px;
+    gap: 8px;
+  }
+
+  .flow-category-label {
+    font-size: 0.82rem;
+  }
+
+  .flow-category-icon {
+    font-size: 1.1rem;
+  }
+
+  .flow-accordion-item {
+    margin-left: 12px;
+  }
+
+  .flow-item-title {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .flow-item-subtitle {
+    display: none;
+  }
+
+  .flow-item-content {
+    margin-left: 8px;
+    padding-left: 4px;
+  }
+}
+
 /* Footer */
 .footer { text-align: center; padding: 48px 0; color: var(--text-very-faint); font-size: 0.8rem; }
 

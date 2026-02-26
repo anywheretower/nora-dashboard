@@ -45,6 +45,10 @@ function App() {
   // Search
   const [searchQuery, setSearchQuery] = useState('')
 
+  // Accordion state
+  const [expandedCategory, setExpandedCategory] = useState(null)
+  const [expandedFlow, setExpandedFlow] = useState(null)
+
   // Modal
   const [modalSkillId, setModalSkillId] = useState(null)
 
@@ -149,6 +153,11 @@ function App() {
       <Nav
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        onExpandCategory={(catKey) => {
+          setExpandedCategory(catKey)
+          setExpandedFlow(null)
+          handleSelectTitle(catKey)
+        }}
       />
 
       <div className="container">
@@ -160,6 +169,10 @@ function App() {
               selectedTitle={selectedFlowTitle}
               onSelectTitle={handleSelectTitle}
               searchQuery={searchQuery}
+              expandedCategory={expandedCategory}
+              setExpandedCategory={setExpandedCategory}
+              expandedFlow={expandedFlow}
+              setExpandedFlow={setExpandedFlow}
             />
           </div>
           <div className="sidebar-panel">

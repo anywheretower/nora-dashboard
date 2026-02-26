@@ -67,20 +67,21 @@ export const textToImageFlows = [
       qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
     },
   },
-  {
-    id: 'pantalla',
-    icon: '📺',
-    title: 'Pantalla',
-    subtitle: '— versiones 16:9 para TVs en salas de espera (flujo independiente)',
-    note: '🕐 Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
-    levels: {
-      activador: [{ type: 'input', text: 'prompt existente' }],
-      supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
-      comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
-      qa: [{ type: 'qa', text: 'observación' }],
-    },
-  },
 ]
+
+export const pantallaFlow = {
+  id: 'pantalla',
+  icon: '📺',
+  title: 'Pantalla',
+  subtitle: '— versiones 16:9 para TVs en salas de espera (flujo independiente)',
+  note: '🕐 Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
+  levels: {
+    activador: [{ type: 'input', text: 'prompt existente' }],
+    supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
+    comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+    qa: [{ type: 'qa', text: 'observación' }],
+  },
+}
 
 export const imgToImgFlow = {
   id: 'producto',

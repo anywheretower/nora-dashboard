@@ -7,14 +7,6 @@ export default function FlowCard({ flow, selectedBox, onSelectBox, selectedTitle
 
   return (
     <div className={`flow-card-wrap${paused ? ' flow-card-paused' : ''}`}>
-      {/* Clickable title */}
-      <div
-        className={`flow-row-label flow-title-clickable${selectedTitle === flow.id ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle(flow.id)}
-      >
-        {flow.icon} {flow.title} {flow.subtitle && <span>{flow.subtitle}</span>}
-      </div>
-
       {/* 4-level card */}
       <div className="flow-card">
         {levelKeys.map(key => (
