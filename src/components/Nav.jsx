@@ -25,7 +25,7 @@ export default function Nav({ searchQuery, onSearchChange, onExpandCategory }) {
       <input
         type="text"
         className="nav-search"
-        placeholder="🔍 Buscar skill..."
+        placeholder="Buscar..."
         value={searchQuery}
         onChange={e => onSearchChange(e.target.value)}
       />

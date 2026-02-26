@@ -6,34 +6,29 @@ import { textToImageFlows, pantallaFlow, imgToImgFlow, videoMGFlow, videoAIFlow,
 const categories = [
   {
     key: 'marca',
-    icon: '🏛️',
-    label: 'MARCA',
+    label: 'Marca',
     flows: marcaFlows,
   },
   {
     key: 't2i',
-    icon: '🎨',
-    label: 'IMAGEN TEXT-TO-IMAGE',
+    label: 'Imagen · Text-to-Image',
     flows: textToImageFlows,
   },
   {
     key: 'i2i',
-    icon: '🔄',
-    label: 'IMAGEN IMG-TO-IMAGE',
+    label: 'Imagen · Img-to-Image',
     flows: [imgToImgFlow],
     autoExpand: true,
   },
   {
     key: 'pantalla',
-    icon: '📺',
-    label: 'PANTALLA',
+    label: 'Pantalla',
     flows: [pantallaFlow],
     autoExpand: true,
   },
   {
     key: 'video',
-    icon: '🎬',
-    label: 'VIDEO',
+    label: 'Video',
     flows: [videoMGFlow, videoAIFlow],
   },
 ]
@@ -135,8 +130,7 @@ export default function FlowDiagram({
               className={`flow-category${isCatExpanded ? ' expanded' : ''}${selectedTitle === cat.key ? ' flow-title-selected' : ''}${cat.key === 'video' ? ' video' : ''}`}
               onClick={() => handleCategoryClick(cat.key)}
             >
-              <span className="flow-category-chevron">{isCatExpanded ? '▼' : '▶'}</span>
-              <span className="flow-category-icon">{cat.icon}</span>
+              <span className="flow-category-chevron">{isCatExpanded ? '–' : '+'}</span>
               <span className="flow-category-label">{cat.label}</span>
               <span className="flow-category-count">{flowCount} {flowWord}</span>
             </div>
@@ -161,8 +155,7 @@ export default function FlowDiagram({
                       className={`flow-item-title${isFlowExpanded ? ' expanded' : ''}${paused ? ' paused' : ''}${selectedTitle === flow.id ? ' flow-title-selected' : ''}`}
                       onClick={() => handleFlowClick(flow.id)}
                     >
-                      <span className="flow-item-chevron">{isFlowExpanded ? '▼' : '▶'}</span>
-                      <span className="flow-item-icon">{flow.icon}</span>
+                      <span className="flow-item-chevron">{isFlowExpanded ? '–' : '+'}</span>
                       <span className="flow-item-name">{flow.title}</span>
                       {flow.subtitle && <span className="flow-item-subtitle">{flow.subtitle}</span>}
                       {paused && <span className="flow-item-paused-badge">⏸ Pausado</span>}
@@ -197,7 +190,7 @@ export default function FlowDiagram({
         ))}
       </div>
       <div className="flow-legend-note">
-        ⚙️ <strong>ejecucion-pipeline</strong> se lee ANTES de cada ejecución de script (transversal a todos los flujos)
+        ejecucion-pipeline se lee antes de cada ejecución de script (transversal a todos los flujos)
       </div>
     </div>
   )

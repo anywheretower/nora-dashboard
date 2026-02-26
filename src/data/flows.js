@@ -4,10 +4,9 @@
 export const textToImageFlows = [
   {
     id: 'referencia',
-    icon: '📸',
     title: 'Referencia',
-    subtitle: '— desde banco de imágenes (139+ refs etiquetadas)',
-    note: '🕐 Por definir · 4/marca · Selecciona ref por composición, técnica y desplazamiento creativo',
+    subtitle: 'desde banco de imágenes (139+ refs etiquetadas)',
+    note: 'Por definir · 4/marca · Selecciona ref por composición, técnica y desplazamiento creativo',
     levels: {
       activador: [{ type: 'support', text: 'imagen-concepto' }, { type: 'input', text: 'banco referencia' }],
       supabase: [{ type: 'gen', text: 'creatividad-referencia' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
@@ -17,10 +16,9 @@ export const textToImageFlows = [
   },
   {
     id: 'original',
-    icon: '🎨',
     title: 'Original',
-    subtitle: '— concepto 100% libre, sin imagen de referencia',
-    note: '🕐 Por definir · 3/marca · Prompt construido desde cero basado en identidad de marca',
+    subtitle: 'concepto 100% libre, sin imagen de referencia',
+    note: 'Por definir · 3/marca · Prompt construido desde cero basado en identidad de marca',
     levels: {
       activador: [{ type: 'support', text: 'imagen-concepto' }],
       supabase: [{ type: 'gen', text: 'creatividad-original' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
@@ -30,10 +28,9 @@ export const textToImageFlows = [
   },
   {
     id: 'universal',
-    icon: '🖼️',
     title: 'Universal',
-    subtitle: '— lienzos genéricos con 65-70% espacio libre para cualquier texto',
-    note: '🕐 Por definir · 3/marca · Composición minimalista, elementos en tercio inferior, máximo espacio para overlay',
+    subtitle: 'lienzos genéricos con 65-70% espacio libre para cualquier texto',
+    note: 'Por definir · 3/marca · Composición minimalista, elementos en tercio inferior, máximo espacio para overlay',
     levels: {
       activador: [{ type: 'support', text: 'imagen-concepto' }],
       supabase: [{ type: 'gen', text: 'creatividad-universal' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
@@ -43,10 +40,9 @@ export const textToImageFlows = [
   },
   {
     id: 'calendario',
-    icon: '📅',
     title: 'Calendario',
-    subtitle: '— proactiva por efemérides, feriados y fechas comerciales',
-    note: '🕐 Por definir · Busca fechas próximos 15 días · Copy temático vinculado a fecha + marca · Composición tipo universal',
+    subtitle: 'proactiva por efemérides, feriados y fechas comerciales',
+    note: 'Por definir · Busca fechas próximos 15 días · Copy temático vinculado a fecha + marca',
     levels: {
       activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'tabla calendario' }, { type: 'support', text: 'imagen-concepto' }],
       supabase: [{ type: 'gen', text: 'creatividad-calendario' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
@@ -56,10 +52,9 @@ export const textToImageFlows = [
   },
   {
     id: 'requerida',
-    icon: '📋',
     title: 'Requerida',
-    subtitle: '— desde pedidos de clientes (5 modalidades)',
-    note: '🕐 Por definir · 5 modos: solo texto, texto+url, texto+ref, "sorpréndeme", completo · Actualiza requerimiento a "procesado"',
+    subtitle: 'desde pedidos de clientes (5 modalidades)',
+    note: 'Por definir · 5 modos: solo texto, texto+url, texto+ref, sorpréndeme, completo',
     levels: {
       activador: [{ type: 'input', text: 'tabla requerimientos' }, { type: 'support', text: 'imagen-concepto' }],
       supabase: [{ type: 'gen', text: 'creatividad-requerida' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
@@ -71,10 +66,9 @@ export const textToImageFlows = [
 
 export const pantallaFlow = {
   id: 'pantalla',
-  icon: '📺',
   title: 'Pantalla',
-  subtitle: '— versiones 16:9 para TVs en salas de espera (flujo independiente)',
-  note: '🕐 Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
+  subtitle: 'versiones 16:9 para TVs en salas de espera',
+  note: 'Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
   levels: {
     activador: [{ type: 'input', text: 'prompt existente' }],
     supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
@@ -85,10 +79,9 @@ export const pantallaFlow = {
 
 export const imgToImgFlow = {
   id: 'producto',
-  icon: '🔄',
   title: 'Producto / Colaborador / Interior / Exterior / Fachada',
-  subtitle: '— edita imagen preservando el sujeto original',
-  note: '🕐 Por definir · Prompt ≤600 chars · 5 orígenes · Qwen Image Edit 2511 · Genera 3:4 y 16:9',
+  subtitle: 'edita imagen preservando el sujeto original',
+  note: 'Por definir · Prompt ≤600 chars · 5 orígenes · Qwen Image Edit 2511 · Genera 3:4 y 16:9',
   levels: {
     activador: [{ type: 'input', text: 'tabla inputs' }, { type: 'support', text: 'imagen-concepto' }],
     supabase: [{ type: 'gen', text: 'creatividad-producto' }, { type: 'step', text: 'paso 6' }, { type: 'step', text: 'paso 7' }],
@@ -99,9 +92,8 @@ export const imgToImgFlow = {
 
 export const videoMGFlow = {
   id: 'video-mg',
-  icon: '🎬',
   title: 'Motion Graphics (Remotion)',
-  note: 'Concepto → guión → voz TTS → animación TSX → render sale MUDO → publicar mezcla audio ffmpeg → QA',
+  note: 'Concepto, guión, voz TTS, animación TSX, render sale mudo, publicar mezcla audio ffmpeg, QA',
   levels: {
     activador: [{ type: 'support', text: 'video-concepto' }, { type: 'support', text: 'libreto-video' }, { type: 'support', text: 'voz-cartesia' }],
     supabase: [{ type: 'video', text: 'remotion-animacion' }],
@@ -112,8 +104,7 @@ export const videoMGFlow = {
 
 export const videoAIFlow = {
   id: 'video-ai',
-  icon: '⏸',
-  title: 'Video AI (LTX-Video 2) — en desarrollo',
+  title: 'Video AI (LTX-Video 2)',
   paused: true,
   note: 'Pipeline AI separado — text/image-to-video con lipsync — pendiente validación',
   levels: {
@@ -127,10 +118,9 @@ export const videoAIFlow = {
 export const marcaFlows = [
   {
     id: 'marca-nueva',
-    icon: '🆕',
     title: 'Marca Nueva',
-    subtitle: '— crea identidad completa desde cero para clientes nuevos',
-    note: 'Manual · Crea ficha, arquetipo, paleta, look&feel, notas, escenarios, prohibido, logos — todo en una pasada',
+    subtitle: 'crea identidad completa desde cero para clientes nuevos',
+    note: 'Manual · Crea ficha, arquetipo, paleta, look and feel, notas, escenarios, prohibido, logos',
     levels: {
       activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'sitio web cliente' }],
       supabase: [{ type: 'pub', text: 'marca-nueva' }],
@@ -140,10 +130,9 @@ export const marcaFlows = [
   },
   {
     id: 'ficha-marca',
-    icon: '📝',
     title: 'Ficha de Marca',
-    subtitle: '— audita y mejora ficha + arquetipo (texto)',
-    note: '🕐 Por definir · Evalúa ficha contra estructura ideal, reescribe con insumos disponibles, aterriza arquetipos al rubro',
+    subtitle: 'audita y mejora ficha + arquetipo (texto)',
+    note: 'Por definir · Evalúa ficha contra estructura ideal, reescribe con insumos disponibles',
     levels: {
       activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'ficha existente' }],
       supabase: [{ type: 'support', text: 'ficha-marca' }],
@@ -153,10 +142,9 @@ export const marcaFlows = [
   },
   {
     id: 'mejora-marca',
-    icon: '🎨',
     title: 'Mejora Marca',
-    subtitle: '— ingeniería inversa visual: paleta + look + notas + prohibido',
-    note: '🕐 Por definir · Analiza creatividades aprobadas para mejorar instrucciones escritas de marca. Trigger: cada 10+ aprobadas',
+    subtitle: 'ingeniería inversa visual: paleta + look + notas + prohibido',
+    note: 'Por definir · Analiza creatividades aprobadas para mejorar instrucciones escritas de marca',
     levels: {
       activador: [{ type: 'input', text: 'creatividades aprobadas' }],
       supabase: [{ type: 'support', text: 'mejora-marca' }],
