@@ -135,9 +135,11 @@ function App() {
 
   // Footer date
   const footerDate = useMemo(() => {
-    const now = new Date()
+    const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Santiago' }))
     const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
-    return `${now.getDate()} de ${months[now.getMonth()]} ${now.getFullYear()}`
+    const h = now.getHours().toString().padStart(2, '0')
+    const m = now.getMinutes().toString().padStart(2, '0')
+    return `${now.getDate()} de ${months[now.getMonth()]} ${now.getFullYear()}, ${h}:${m} hrs`
   }, [])
 
   return (
