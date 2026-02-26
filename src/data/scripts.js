@@ -23,14 +23,15 @@ export const scripts = [
     badgeClass: 'badge-gen',
     status: 'active',
     cardStyle: 1,
-    description: 'Edita imágenes vía ComfyUI (Qwen Image Edit 2511). Soporta 3:4 (paso 7→8) y 16:9 (paso 9→10). Descarga imagen original, aplica prompt de edición, sube resultado.',
+    description: 'Edita imágenes 3:4 vía ComfyUI (Qwen Image Edit 2511). Descarga imagen original, aplica prompt de edición, sube resultado. Solo formato 3:4 (1104×1472).',
     meta: [
-      { icon: '🔧', label: 'Uso', value: 'node comfy-img2img.mjs --once [--id=123] [--ratio=16:9]', code: true },
+      { icon: '🔧', label: 'Uso', value: 'node comfy-img2img.mjs --once [--id=123]', code: true },
+      { icon: '📐', label: 'Dimensiones', value: '1104×1472 (3:4)' },
       { icon: '⏱️', label: 'Tiempo', value: '~1 min/imagen (primera ~2 min carga modelo)' },
       { icon: '⚠️', label: 'Límite', value: 'máx 15 imágenes por corrida (VRAM leak)' },
       { icon: '📱', label: 'Notifica', value: 'vía Telegram Bot al terminar batch' },
     ],
-    rev: 'Pipeline: paso 7→8 (3:4) / paso 9→10 (16:9)',
+    rev: 'Pipeline: paso 7 → paso 8',
     deps: 'Requiere: ComfyUI corriendo',
   },
   {
