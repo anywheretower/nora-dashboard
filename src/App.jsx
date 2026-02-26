@@ -90,7 +90,10 @@ function App() {
     document.body.style.overflow = ''
   }, [])
 
-  // Escape key to close modal
+  // Sidebar: selected flow box
+  const [selectedBox, setSelectedBox] = useState(null)
+
+  // Escape key to close modal or sidebar
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -104,9 +107,6 @@ function App() {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [modalSkillId, closeSkill, selectedBox])
-
-  // Sidebar: selected flow box
-  const [selectedBox, setSelectedBox] = useState(null)
 
   const handleSelectBox = useCallback((boxText) => {
     setSelectedBox(prev => prev === boxText ? null : boxText)
