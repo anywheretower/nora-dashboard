@@ -1,4 +1,4 @@
-export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBox }) {
+export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBox, searchQuery }) {
   return (
     <div className="flow-row" style={paused ? { opacity: 0.5 } : undefined}>
       {boxes.map((box, i) => {
@@ -11,6 +11,7 @@ export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBo
 
         const isSelected = selectedBox === box.text
         const isClickable = box.type !== 'separator' && box.type !== 'bidirectional'
+        const isDimmed = searchQuery && !box.text.toLowerCase().includes(searchQuery)
 
         return (
           <span key={i}>
@@ -18,7 +19,7 @@ export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBo
               <span className="flow-arrow">→</span>
             )}
             <span
-              className={`flow-box flow-${box.type}${isSelected ? ' selected' : ''}${isClickable ? ' clickable' : ''}`}
+              className={`flow-box flow-${box.type}${isSelected ? ' selected' : ''}${isClickable ? ' clickable' : ''}${isDimmed ? ' dimmed' : ''}`}
               onClick={isClickable && onSelectBox ? () => onSelectBox(box.text) : undefined}
             >
               {box.text}

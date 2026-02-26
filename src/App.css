@@ -358,6 +358,235 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .connector { text-align: center; color: var(--badge-support-color); font-size: 1.4rem; margin: -8px 0 8px; }
 .connector.video { color: var(--video-accent); }
 
+/* ===================== */
+/* Clickable flow titles */
+/* ===================== */
+
+.flow-title-clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  padding-left: 8px;
+  margin-left: -8px;
+}
+
+.flow-section-header.flow-title-clickable {
+  padding-left: 12px;
+  margin-left: -12px;
+  border-radius: 8px;
+}
+
+.flow-title-clickable:hover {
+  background: var(--accent-light);
+}
+
+.flow-section-header.flow-title-clickable:hover {
+  background: var(--accent-light);
+}
+
+.flow-title-clickable.flow-title-selected {
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  padding-left: 9px;
+}
+
+.flow-section-header.flow-title-clickable.flow-title-selected {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+}
+
+/* Dimmed flow boxes (search filter) */
+.flow-box.dimmed {
+  opacity: 0.25;
+  transform: scale(0.95);
+}
+
+/* ===================== */
+/* Flow Summary panel    */
+/* ===================== */
+
+.flow-summary {
+  padding: 8px 0;
+}
+
+.flow-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-top: 8px;
+}
+
+.flow-summary-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.flow-summary-icon {
+  font-size: 1.6rem;
+}
+
+.flow-summary-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.flow-summary-section {
+  margin-bottom: 20px;
+}
+
+.flow-summary-section h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--accent-border);
+}
+
+.flow-summary-proto {
+  background: var(--proto-card-bg);
+  border: 1px solid var(--proto-card-border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.flow-summary-proto p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.flow-summary-shared {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flow-summary-shared-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--bg-shared-item);
+  border: 1px solid var(--border-nav-link);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.flow-summary-shared-item strong {
+  color: var(--text-primary);
+}
+
+.flow-summary-cron-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-main);
+}
+
+.flow-summary-cron-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.flow-summary-cron-table thead th {
+  background: var(--bg-cron-header);
+  color: #fff;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.flow-summary-cron-table tbody tr:nth-child(even) {
+  background: var(--bg-cron-even);
+}
+
+.flow-summary-cron-table tbody tr:nth-child(odd) {
+  background: var(--bg-cron-odd);
+}
+
+.flow-summary-cron-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+.flow-summary-cron-table .cron-skill {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.flow-summary-cron-table .cron-schedule {
+  font-weight: 500;
+}
+
+.flow-summary-note {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 6px;
+  padding: 4px 8px;
+  background: var(--accent-light);
+  border-radius: 4px;
+}
+
+.flow-summary-empty {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-style: italic;
+  padding: 8px 0;
+}
+
+.flow-summary-scripts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flow-summary-script-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.flow-summary-script-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.flow-summary-script-header strong {
+  font-size: 0.85rem;
+  color: var(--text-card-title);
+}
+
+.flow-summary-script-card p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.flow-summary-script-card .meta-row {
+  margin-bottom: 2px;
+}
+
+.flow-summary-script-card .meta-text {
+  font-size: 0.72rem;
+}
+
 /* Footer */
 .footer { text-align: center; padding: 48px 0; color: var(--text-very-faint); font-size: 0.8rem; }
 

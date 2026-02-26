@@ -1,6 +1,19 @@
 import Card from './Card'
+import FlowSummary from './FlowSummary'
 
-export default function Sidebar({ detail, onClose, onOpenSkill }) {
+export default function Sidebar({ detail, selectedTitle, flowSummary, onClose, onOpenSkill }) {
+  // Flow title selected → show summary panel
+  if (selectedTitle && flowSummary) {
+    return (
+      <FlowSummary
+        summary={flowSummary}
+        onClose={onClose}
+        onOpenSkill={onOpenSkill}
+      />
+    )
+  }
+
+  // No box selected → empty state
   if (!detail) {
     return (
       <div className="sidebar-empty">
@@ -71,7 +84,7 @@ export default function Sidebar({ detail, onClose, onOpenSkill }) {
     )
   }
 
-  // Generic info card (render MP4, LTX, upscale, pending skills)
+  // Generic info card
   if (type === 'info') {
     return (
       <div className="sidebar-content">

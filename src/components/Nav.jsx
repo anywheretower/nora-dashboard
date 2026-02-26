@@ -1,12 +1,18 @@
-import { navLinks } from '../data/nav'
+const flowQuickLinks = [
+  { id: 'flow-t2i', label: 'T2I' },
+  { id: 'flow-i2i', label: 'I2I' },
+  { id: 'flow-row-pantalla', label: 'Pantalla' },
+  { id: 'flow-video', label: 'Video' },
+  { id: 'flow-marca', label: 'Marca' },
+]
 
-export default function Nav({ activeSection, searchQuery, onSearchChange }) {
+export default function Nav({ searchQuery, onSearchChange }) {
 
   const handleClick = (e, id) => {
     e.preventDefault()
     const el = document.getElementById(id)
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 
@@ -19,12 +25,10 @@ export default function Nav({ activeSection, searchQuery, onSearchChange }) {
         value={searchQuery}
         onChange={e => onSearchChange(e.target.value)}
       />
-      {navLinks.map(link => (
+      {flowQuickLinks.map(link => (
         <a
           key={link.id}
           href={`#${link.id}`}
-          data-section={link.id}
-          className={activeSection === link.id ? 'spy-active' : ''}
           onClick={e => handleClick(e, link.id)}
         >
           {link.label}
