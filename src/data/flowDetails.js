@@ -145,6 +145,27 @@ const inputDetails = {
     description: 'Búsqueda en internet (Brave API) para descubrir efemérides, feriados y fechas comerciales relevantes al rubro de cada marca en los próximos 15 días.',
     color: 'var(--flow-input-color)',
   },
+  'sitio web cliente': {
+    type: 'input',
+    title: 'Sitio Web del Cliente',
+    icon: '🌐',
+    description: 'Página web del cliente. Se analiza para extraer identidad visual, propuesta de valor, servicios, tono de comunicación y público objetivo.',
+    color: 'var(--flow-input-color)',
+  },
+  'ficha existente': {
+    type: 'input',
+    title: 'Ficha Existente',
+    icon: '📄',
+    description: 'Ficha de marca actual en Supabase. Se evalúa contra la estructura ideal de 13 secciones para identificar vacíos y oportunidades de mejora.',
+    color: 'var(--flow-input-color)',
+  },
+  'creatividades aprobadas': {
+    type: 'input',
+    title: 'Creatividades Aprobadas',
+    icon: '✅',
+    description: 'Creatividades con condicion=resultado_final. Se analizan visualmente para extraer patrones que funcionan y mejorar las instrucciones escritas de marca (paleta, look&feel, notas, prohibido).',
+    color: 'var(--flow-input-color)',
+  },
 }
 
 // Info cards for non-skill items

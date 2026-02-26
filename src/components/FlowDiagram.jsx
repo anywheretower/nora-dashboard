@@ -1,5 +1,5 @@
 import FlowCard from './FlowCard'
-import { textToImageFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlow, legend } from '../data/flows'
+import { textToImageFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlows, legend } from '../data/flows'
 
 export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, onSelectTitle, searchQuery }) {
   const q = (searchQuery || '').toLowerCase().trim()
@@ -15,14 +15,17 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
         Marca
       </div>
 
-      <FlowCard
-        flow={marcaFlow}
-        selectedBox={selectedBox}
-        onSelectBox={onSelectBox}
-        selectedTitle={selectedTitle}
-        onSelectTitle={onSelectTitle}
-        searchQuery={q}
-      />
+      {marcaFlows.map((flow) => (
+        <FlowCard
+          key={flow.id}
+          flow={flow}
+          selectedBox={selectedBox}
+          onSelectBox={onSelectBox}
+          selectedTitle={selectedTitle}
+          onSelectTitle={onSelectTitle}
+          searchQuery={q}
+        />
+      ))}
 
       {/* Separator */}
       <div className="flow-separator" />

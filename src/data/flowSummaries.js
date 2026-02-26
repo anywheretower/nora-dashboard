@@ -31,6 +31,27 @@ export const flowSummaries = {
     cronSkills: ['ficha-marca', 'mejora-marca'],
     scriptIds: [],
   },
+  'marca-nueva': {
+    label: '🆕 Marca Nueva',
+    icon: '🆕',
+    description: 'Crea identidad completa desde cero para clientes nuevos: ficha, arquetipo, paleta, look&feel, notas, escenarios, prohibido, logos.',
+    cronSkills: [],
+    scriptIds: [],
+  },
+  'ficha-marca': {
+    label: '📝 Ficha de Marca',
+    icon: '📝',
+    description: 'Audita y mejora ficha + arquetipo (texto). Evalúa contra estructura ideal, reescribe con insumos disponibles.',
+    cronSkills: ['ficha-marca'],
+    scriptIds: [],
+  },
+  'mejora-marca': {
+    label: '🎨 Mejora Marca',
+    icon: '🎨',
+    description: 'Ingeniería inversa visual: analiza creatividades aprobadas para mejorar paleta, look&feel, notas generales y contenido prohibido.',
+    cronSkills: ['mejora-marca'],
+    scriptIds: [],
+  },
 
   // Individual T2I flows
   'referencia': {

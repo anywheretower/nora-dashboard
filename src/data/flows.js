@@ -123,18 +123,47 @@ export const videoAIFlow = {
   },
 }
 
-export const marcaFlow = {
-  id: 'marca',
-  icon: '🏛️',
-  title: 'Gestión de identidad de marca',
-  note: '<strong>marca-nueva</strong>: crea todo desde cero · <strong>ficha-marca</strong>: mejora ficha + arquetipo · <strong>mejora-marca</strong>: mejora paleta + look + notas + prohibido — bidireccional',
-  levels: {
-    activador: [{ type: 'na', text: 'No aplica (manual / cron)' }],
-    supabase: [{ type: 'pub', text: 'marca-nueva' }, { type: 'separator', text: '|' }, { type: 'support', text: 'ficha-marca' }, { type: 'bidirectional', text: '↔' }, { type: 'support', text: 'mejora-marca' }],
-    comfy: [{ type: 'na', text: 'No aplica' }],
-    qa: [{ type: 'na', text: 'No aplica' }],
+export const marcaFlows = [
+  {
+    id: 'marca-nueva',
+    icon: '🆕',
+    title: 'Marca Nueva',
+    subtitle: '— crea identidad completa desde cero para clientes nuevos',
+    note: 'Manual · Crea ficha, arquetipo, paleta, look&feel, notas, escenarios, prohibido, logos — todo en una pasada',
+    levels: {
+      activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'sitio web cliente' }],
+      supabase: [{ type: 'pub', text: 'marca-nueva' }],
+      comfy: [{ type: 'na', text: 'No aplica' }],
+      qa: [{ type: 'na', text: 'No aplica' }],
+    },
   },
-}
+  {
+    id: 'ficha-marca',
+    icon: '📝',
+    title: 'Ficha de Marca',
+    subtitle: '— audita y mejora ficha + arquetipo (texto)',
+    note: '🕐 Por definir · Evalúa ficha contra estructura ideal, reescribe con insumos disponibles, aterriza arquetipos al rubro',
+    levels: {
+      activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'ficha existente' }],
+      supabase: [{ type: 'support', text: 'ficha-marca' }],
+      comfy: [{ type: 'na', text: 'No aplica' }],
+      qa: [{ type: 'na', text: 'No aplica' }],
+    },
+  },
+  {
+    id: 'mejora-marca',
+    icon: '🎨',
+    title: 'Mejora Marca',
+    subtitle: '— ingeniería inversa visual: paleta + look + notas + prohibido',
+    note: '🕐 Por definir · Analiza creatividades aprobadas para mejorar instrucciones escritas de marca. Trigger: cada 10+ aprobadas',
+    levels: {
+      activador: [{ type: 'input', text: 'creatividades aprobadas' }],
+      supabase: [{ type: 'support', text: 'mejora-marca' }],
+      comfy: [{ type: 'na', text: 'No aplica' }],
+      qa: [{ type: 'na', text: 'No aplica' }],
+    },
+  },
+]
 
 export const legend = [
   { text: 'input', type: 'input', label: 'fuente datos' },
