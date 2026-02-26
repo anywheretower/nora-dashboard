@@ -6,6 +6,27 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
 
   return (
     <div className="flow-diagram">
+      {/* Marca */}
+      <div
+        id="flow-marca"
+        className={`flow-section-header flow-title-clickable${selectedTitle === 'marca' ? ' flow-title-selected' : ''}`}
+        onClick={() => onSelectTitle('marca')}
+      >
+        Marca
+      </div>
+
+      <FlowCard
+        flow={marcaFlow}
+        selectedBox={selectedBox}
+        onSelectBox={onSelectBox}
+        selectedTitle={selectedTitle}
+        onSelectTitle={onSelectTitle}
+        searchQuery={q}
+      />
+
+      {/* Separator */}
+      <div className="flow-separator" />
+
       {/* Text-to-Image section */}
       <div
         id="flow-t2i"
@@ -71,27 +92,6 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
 
       <FlowCard
         flow={videoAIFlow}
-        selectedBox={selectedBox}
-        onSelectBox={onSelectBox}
-        selectedTitle={selectedTitle}
-        onSelectTitle={onSelectTitle}
-        searchQuery={q}
-      />
-
-      {/* Separator */}
-      <div className="flow-separator" />
-
-      {/* Marca */}
-      <div
-        id="flow-marca"
-        className={`flow-section-header flow-title-clickable${selectedTitle === 'marca' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('marca')}
-      >
-        Marca
-      </div>
-
-      <FlowCard
-        flow={marcaFlow}
         selectedBox={selectedBox}
         onSelectBox={onSelectBox}
         selectedTitle={selectedTitle}

@@ -1,9 +1,9 @@
 const flowQuickLinks = [
+  { id: 'flow-marca', label: 'Marca' },
   { id: 'flow-t2i', label: 'T2I' },
   { id: 'flow-i2i', label: 'I2I' },
   { id: 'flow-row-pantalla', label: 'Pantalla' },
   { id: 'flow-video', label: 'Video' },
-  { id: 'flow-marca', label: 'Marca' },
 ]
 
 export default function Nav({ searchQuery, onSearchChange }) {
