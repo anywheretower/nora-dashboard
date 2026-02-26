@@ -1,4 +1,4 @@
-import FlowRow from './FlowRow'
+import FlowCard from './FlowCard'
 import { textToImageFlows, imgToImgFlow, videoMGFlow, videoAIFlow, marcaFlow, legend } from '../data/flows'
 
 export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, onSelectTitle, searchQuery }) {
@@ -15,17 +15,16 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
         Imagen Text-to-Image
       </div>
 
-      {textToImageFlows.map((flow, idx) => (
-        <div key={flow.id} id={`flow-row-${flow.id}`} style={idx > 0 ? { marginTop: 14 } : undefined}>
-          <div
-            className={`flow-row-label flow-title-clickable${selectedTitle === flow.id ? ' flow-title-selected' : ''}`}
-            onClick={() => onSelectTitle(flow.id)}
-          >
-            {flow.icon} {flow.title} <span>{flow.subtitle}</span>
-          </div>
-          <FlowRow boxes={flow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} searchQuery={q} />
-          <div className="flow-note">{flow.note}</div>
-        </div>
+      {textToImageFlows.map((flow) => (
+        <FlowCard
+          key={flow.id}
+          flow={flow}
+          selectedBox={selectedBox}
+          onSelectBox={onSelectBox}
+          selectedTitle={selectedTitle}
+          onSelectTitle={onSelectTitle}
+          searchQuery={q}
+        />
       ))}
 
       {/* Separator */}
@@ -39,14 +38,15 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
       >
         Imagen Img-to-Image
       </div>
-      <div
-        className={`flow-row-label flow-title-clickable${selectedTitle === 'producto' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('producto')}
-      >
-        {imgToImgFlow.icon} {imgToImgFlow.title} <span>{imgToImgFlow.subtitle}</span>
-      </div>
-      <FlowRow boxes={imgToImgFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} searchQuery={q} />
-      <div className="flow-note">{imgToImgFlow.note}</div>
+
+      <FlowCard
+        flow={imgToImgFlow}
+        selectedBox={selectedBox}
+        onSelectBox={onSelectBox}
+        selectedTitle={selectedTitle}
+        onSelectTitle={onSelectTitle}
+        searchQuery={q}
+      />
 
       {/* Separator */}
       <div className="flow-separator" />
@@ -60,26 +60,23 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
         Video
       </div>
 
-      <div
-        className={`flow-row-label flow-title-clickable${selectedTitle === 'video-mg' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('video-mg')}
-      >
-        {videoMGFlow.icon} {videoMGFlow.title}
-      </div>
-      <FlowRow boxes={videoMGFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} searchQuery={q} />
-      <div className="flow-note">{videoMGFlow.note}</div>
+      <FlowCard
+        flow={videoMGFlow}
+        selectedBox={selectedBox}
+        onSelectBox={onSelectBox}
+        selectedTitle={selectedTitle}
+        onSelectTitle={onSelectTitle}
+        searchQuery={q}
+      />
 
-      <div style={{ marginTop: 14 }}>
-        <div
-          className={`flow-row-label flow-title-clickable${selectedTitle === 'video-ai' ? ' flow-title-selected' : ''}`}
-          style={{ color: '#999' }}
-          onClick={() => onSelectTitle('video-ai')}
-        >
-          {videoAIFlow.icon} {videoAIFlow.title}
-        </div>
-        <FlowRow boxes={videoAIFlow.boxes} paused selectedBox={selectedBox} onSelectBox={onSelectBox} searchQuery={q} />
-        <div className="flow-note" style={{ color: '#999' }}>{videoAIFlow.note}</div>
-      </div>
+      <FlowCard
+        flow={videoAIFlow}
+        selectedBox={selectedBox}
+        onSelectBox={onSelectBox}
+        selectedTitle={selectedTitle}
+        onSelectTitle={onSelectTitle}
+        searchQuery={q}
+      />
 
       {/* Separator */}
       <div className="flow-separator" />
@@ -92,14 +89,15 @@ export default function FlowDiagram({ selectedBox, onSelectBox, selectedTitle, o
       >
         Marca
       </div>
-      <div
-        className={`flow-row-label flow-title-clickable${selectedTitle === 'marca' ? ' flow-title-selected' : ''}`}
-        onClick={() => onSelectTitle('marca')}
-      >
-        {marcaFlow.icon} {marcaFlow.title}
-      </div>
-      <FlowRow boxes={marcaFlow.boxes} selectedBox={selectedBox} onSelectBox={onSelectBox} searchQuery={q} />
-      <div className="flow-note" dangerouslySetInnerHTML={{ __html: marcaFlow.note }} />
+
+      <FlowCard
+        flow={marcaFlow}
+        selectedBox={selectedBox}
+        onSelectBox={onSelectBox}
+        selectedTitle={selectedTitle}
+        onSelectTitle={onSelectTitle}
+        searchQuery={q}
+      />
 
       {/* Legend */}
       <div className="flow-legend">

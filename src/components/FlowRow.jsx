@@ -2,6 +2,11 @@ export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBo
   return (
     <div className="flow-row" style={paused ? { opacity: 0.5 } : undefined}>
       {boxes.map((box, i) => {
+        // "No aplica" — gray italic
+        if (box.type === 'na') {
+          return <span key={i} className="flow-na">{box.text}</span>
+        }
+
         if (box.type === 'separator') {
           return <span key={i} className="flow-arrow" style={{ color: '#999' }}>|</span>
         }
@@ -10,7 +15,7 @@ export default function FlowRow({ boxes, paused = false, selectedBox, onSelectBo
         }
 
         const isSelected = selectedBox === box.text
-        const isClickable = box.type !== 'separator' && box.type !== 'bidirectional'
+        const isClickable = true
         const isDimmed = searchQuery && !box.text.toLowerCase().includes(searchQuery)
 
         return (

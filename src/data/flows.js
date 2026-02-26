@@ -1,5 +1,5 @@
-// Flow diagram data
-// Types: support (blue), gen (green), step (purple), script (orange), qa (amber), pub (red), input (cyan), video (purple-video)
+// Flow diagram data — 4-level structure
+// Types: support (blue), gen (green), step (purple), script (orange), qa (amber), pub (red), input (cyan), video (purple-video), na (gray italic)
 
 export const textToImageFlows = [
   {
@@ -7,174 +7,133 @@ export const textToImageFlows = [
     icon: '📸',
     title: 'Referencia',
     subtitle: '— desde banco de imágenes (139+ refs etiquetadas)',
-    boxes: [
-      { text: 'imagen-concepto', type: 'support' },
-      { text: 'banco referencia', type: 'input' },
-      { text: 'creatividad-referencia', type: 'gen' },
-      { text: 'prompt-master', type: 'support' },
-      { text: 'paso 4', type: 'step' },
-      { text: 'comfy-text2img', type: 'script' },
-      { text: 'paso 5', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'iteración', type: 'qa' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · 4/marca · Selecciona ref por composición, técnica y desplazamiento creativo',
+    levels: {
+      activador: [{ type: 'support', text: 'imagen-concepto' }, { type: 'input', text: 'banco referencia' }],
+      supabase: [{ type: 'gen', text: 'creatividad-referencia' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img' }, { type: 'step', text: 'paso 5' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+    },
   },
   {
     id: 'original',
     icon: '🎨',
     title: 'Original',
     subtitle: '— concepto 100% libre, sin imagen de referencia',
-    boxes: [
-      { text: 'imagen-concepto', type: 'support' },
-      { text: 'creatividad-original', type: 'gen' },
-      { text: 'prompt-master', type: 'support' },
-      { text: 'paso 4', type: 'step' },
-      { text: 'comfy-text2img', type: 'script' },
-      { text: 'paso 5', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'iteración', type: 'qa' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · 3/marca · Prompt construido desde cero basado en identidad de marca',
+    levels: {
+      activador: [{ type: 'support', text: 'imagen-concepto' }],
+      supabase: [{ type: 'gen', text: 'creatividad-original' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img' }, { type: 'step', text: 'paso 5' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+    },
   },
   {
     id: 'universal',
     icon: '🖼️',
     title: 'Universal',
     subtitle: '— lienzos genéricos con 65-70% espacio libre para cualquier texto',
-    boxes: [
-      { text: 'imagen-concepto', type: 'support' },
-      { text: 'creatividad-universal', type: 'gen' },
-      { text: 'prompt-master', type: 'support' },
-      { text: 'paso 4', type: 'step' },
-      { text: 'comfy-text2img', type: 'script' },
-      { text: 'paso 5', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'iteración', type: 'qa' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · 3/marca · Composición minimalista, elementos en tercio inferior, máximo espacio para overlay',
+    levels: {
+      activador: [{ type: 'support', text: 'imagen-concepto' }],
+      supabase: [{ type: 'gen', text: 'creatividad-universal' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img' }, { type: 'step', text: 'paso 5' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+    },
   },
   {
     id: 'calendario',
     icon: '📅',
     title: 'Calendario',
     subtitle: '— proactiva por efemérides, feriados y fechas comerciales',
-    boxes: [
-      { text: 'web_search', type: 'input' },
-      { text: 'tabla calendario', type: 'input' },
-      { text: 'imagen-concepto', type: 'support' },
-      { text: 'creatividad-calendario', type: 'gen' },
-      { text: 'prompt-master', type: 'support' },
-      { text: 'paso 4', type: 'step' },
-      { text: 'comfy-text2img', type: 'script' },
-      { text: 'paso 5', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'iteración', type: 'qa' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · Busca fechas próximos 15 días · Copy temático vinculado a fecha + marca · Composición tipo universal',
+    levels: {
+      activador: [{ type: 'input', text: 'web_search' }, { type: 'input', text: 'tabla calendario' }, { type: 'support', text: 'imagen-concepto' }],
+      supabase: [{ type: 'gen', text: 'creatividad-calendario' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img' }, { type: 'step', text: 'paso 5' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+    },
   },
   {
     id: 'requerida',
     icon: '📋',
     title: 'Requerida',
     subtitle: '— desde pedidos de clientes (5 modalidades)',
-    boxes: [
-      { text: 'tabla requerimientos', type: 'input' },
-      { text: 'imagen-concepto', type: 'support' },
-      { text: 'creatividad-requerida', type: 'gen' },
-      { text: 'prompt-master', type: 'support' },
-      { text: 'paso 4', type: 'step' },
-      { text: 'comfy-text2img', type: 'script' },
-      { text: 'paso 5', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'iteración', type: 'qa' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · 5 modos: solo texto, texto+url, texto+ref, "sorpréndeme", completo · Actualiza requerimiento a "procesado"',
+    levels: {
+      activador: [{ type: 'input', text: 'tabla requerimientos' }, { type: 'support', text: 'imagen-concepto' }],
+      supabase: [{ type: 'gen', text: 'creatividad-requerida' }, { type: 'support', text: 'prompt-master' }, { type: 'step', text: 'paso 4' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img' }, { type: 'step', text: 'paso 5' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+    },
   },
   {
     id: 'pantalla',
     icon: '📺',
     title: 'Pantalla',
     subtitle: '— versiones 16:9 para TVs en salas de espera (flujo independiente)',
-    boxes: [
-      { text: 'prompt existente', type: 'input' },
-      { text: 'creatividad-pantalla', type: 'gen' },
-      { text: 'paso 9', type: 'step' },
-      { text: 'comfy-text2img --ratio=16:9', type: 'script' },
-      { text: 'paso 10', type: 'step' },
-      { text: 'para_revision', type: 'step' },
-      { text: 'observación', type: 'qa' },
-    ],
     note: '🕐 Por definir · Sin concepto ni prompt-master (recicla) · Sin iteración · Solo observación',
+    levels: {
+      activador: [{ type: 'input', text: 'prompt existente' }],
+      supabase: [{ type: 'gen', text: 'creatividad-pantalla' }, { type: 'step', text: 'paso 9' }],
+      comfy: [{ type: 'script', text: 'comfy-text2img --ratio=16:9' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+      qa: [{ type: 'qa', text: 'observación' }],
+    },
   },
 ]
 
 export const imgToImgFlow = {
+  id: 'producto',
   icon: '🔄',
   title: 'Producto / Colaborador / Interior / Exterior / Fachada',
   subtitle: '— edita imagen preservando el sujeto original',
-  boxes: [
-    { text: 'tabla inputs', type: 'input' },
-    { text: 'imagen-concepto', type: 'support' },
-    { text: 'creatividad-producto', type: 'gen' },
-    { text: 'paso 6', type: 'step' },
-    { text: 'paso 7', type: 'step' },
-    { text: 'comfy-img2img (3:4)', type: 'script' },
-    { text: 'paso 8', type: 'step' },
-    { text: 'comfy-img2img (16:9)', type: 'script' },
-    { text: 'paso 10', type: 'step' },
-    { text: 'para_revision', type: 'step' },
-    { text: 'iteración', type: 'qa' },
-    { text: 'observación', type: 'qa' },
-  ],
   note: '🕐 Por definir · Prompt ≤600 chars · 5 orígenes · Qwen Image Edit 2511 · Genera 3:4 y 16:9',
+  levels: {
+    activador: [{ type: 'input', text: 'tabla inputs' }, { type: 'support', text: 'imagen-concepto' }],
+    supabase: [{ type: 'gen', text: 'creatividad-producto' }, { type: 'step', text: 'paso 6' }, { type: 'step', text: 'paso 7' }],
+    comfy: [{ type: 'script', text: 'comfy-img2img (3:4)' }, { type: 'step', text: 'paso 8' }, { type: 'script', text: 'comfy-img2img (16:9)' }, { type: 'step', text: 'paso 10' }, { type: 'step', text: 'para_revision' }],
+    qa: [{ type: 'qa', text: 'iteración' }, { type: 'qa', text: 'observación' }],
+  },
 }
 
 export const videoMGFlow = {
+  id: 'video-mg',
   icon: '🎬',
   title: 'Motion Graphics (Remotion)',
-  boxes: [
-    { text: 'video-concepto', type: 'support' },
-    { text: 'libreto-video', type: 'support' },
-    { text: 'voz-cartesia', type: 'support' },
-    { text: 'remotion-animacion', type: 'video' },
-    { text: 'render MP4 (mudo)', type: 'script' },
-    { text: 'publicar-video', type: 'pub' },
-    { text: 'video-iteración', type: 'qa' },
-    { text: 'video-observación', type: 'qa' },
-  ],
   note: 'Concepto → guión → voz TTS → animación TSX → render sale MUDO → publicar mezcla audio ffmpeg → QA',
+  levels: {
+    activador: [{ type: 'support', text: 'video-concepto' }, { type: 'support', text: 'libreto-video' }, { type: 'support', text: 'voz-cartesia' }],
+    supabase: [{ type: 'video', text: 'remotion-animacion' }],
+    comfy: [{ type: 'script', text: 'render MP4 (mudo)' }, { type: 'pub', text: 'publicar-video' }],
+    qa: [{ type: 'qa', text: 'video-iteración' }, { type: 'qa', text: 'video-observación' }],
+  },
 }
 
 export const videoAIFlow = {
+  id: 'video-ai',
   icon: '⏸',
   title: 'Video AI (LTX-Video 2) — en desarrollo',
   paused: true,
-  boxes: [
-    { text: 'prompt-ltxvideo', type: 'support' },
-    { text: 'ComfyUI LTX-Video 2', type: 'script' },
-    { text: 'upscale 720p', type: 'script' },
-    { text: 'publicar-video', type: 'pub' },
-  ],
   note: 'Pipeline AI separado — text/image-to-video con lipsync — pendiente validación',
+  levels: {
+    activador: [{ type: 'support', text: 'prompt-ltxvideo' }],
+    supabase: [{ type: 'na', text: 'No aplica' }],
+    comfy: [{ type: 'script', text: 'ComfyUI LTX-Video 2' }, { type: 'script', text: 'upscale 720p' }],
+    qa: [{ type: 'pub', text: 'publicar-video' }],
+  },
 }
 
 export const marcaFlow = {
+  id: 'marca',
   icon: '🏛️',
   title: 'Gestión de identidad de marca',
-  boxes: [
-    { text: 'marca-nueva', type: 'pub' },
-    { text: '|', type: 'separator' },
-    { text: 'ficha-marca', type: 'support' },
-    { text: '↔', type: 'bidirectional' },
-    { text: 'mejora-marca', type: 'support' },
-  ],
   note: '<strong>marca-nueva</strong>: crea todo desde cero · <strong>ficha-marca</strong>: mejora ficha + arquetipo · <strong>mejora-marca</strong>: mejora paleta + look + notas + prohibido — bidireccional',
+  levels: {
+    activador: [{ type: 'na', text: 'No aplica (manual / cron)' }],
+    supabase: [{ type: 'pub', text: 'marca-nueva' }, { type: 'separator', text: '|' }, { type: 'support', text: 'ficha-marca' }, { type: 'bidirectional', text: '↔' }, { type: 'support', text: 'mejora-marca' }],
+    comfy: [{ type: 'na', text: 'No aplica' }],
+    qa: [{ type: 'na', text: 'No aplica' }],
+  },
 }
 
 export const legend = [

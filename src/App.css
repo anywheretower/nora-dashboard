@@ -233,6 +233,97 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .flow-row-label span { font-weight: 400; color: var(--text-faint); }
 .flow-separator { margin: 24px 0 16px; border-top: 2px solid var(--border-light); }
 
+/* ===================== */
+/* Flow Card (4-level)   */
+/* ===================== */
+
+.flow-card-wrap {
+  margin-bottom: 16px;
+}
+
+.flow-card-wrap .flow-row-label {
+  margin-bottom: 6px;
+}
+
+.flow-card-wrap .flow-note {
+  margin-top: 6px;
+}
+
+.flow-card-paused .flow-card {
+  opacity: var(--paused-opacity);
+}
+
+.flow-card-paused .flow-row-label {
+  color: var(--paused-title-color);
+}
+
+.flow-card {
+  border: 1px solid var(--border-card);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+/* Flow Level row */
+.flow-level {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.flow-level:last-child {
+  border-bottom: none;
+}
+
+.flow-level-label {
+  flex: 0 0 100px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-right: 1px solid var(--border-light);
+  min-height: 42px;
+}
+
+.flow-level-icon {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.flow-level-text {
+  line-height: 1;
+}
+
+/* Level label colors */
+.flow-level-label.level-activador { color: var(--flow-input-color); background: var(--flow-input-bg); }
+.flow-level-label.level-supabase { color: var(--flow-gen-color); background: var(--flow-gen-bg); }
+.flow-level-label.level-comfy { color: var(--flow-script-color); background: var(--flow-script-bg); }
+.flow-level-label.level-qa { color: var(--flow-qa-color); background: var(--flow-qa-bg); }
+
+.flow-level-content {
+  flex: 1;
+  padding: 4px 12px;
+  min-width: 0;
+}
+
+.flow-level-content .flow-row {
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+/* "No aplica" text */
+.flow-na {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-style: italic;
+  padding: 4px 0;
+}
+
 /* Legend */
 .flow-legend { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border-light); display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.7rem; align-items: center; }
 .flow-legend-note { margin-top: 8px; font-size: 0.65rem; color: var(--text-faint); }
@@ -604,6 +695,11 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
   .nav-search:focus { width: 150px; }
   .cron-table { font-size: 0.75rem; }
   .cron-table td, .cron-table th { padding: 8px 10px; }
+
+  /* Flow levels stack on mobile */
+  .flow-level { flex-direction: column; align-items: flex-start; }
+  .flow-level-label { flex: none; width: 100%; border-right: none; border-bottom: 1px solid var(--border-light); padding: 6px 10px; min-height: auto; }
+  .flow-level-content { width: 100%; padding: 6px 10px; }
 }
 @media (min-width: 769px) and (max-width: 1100px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
