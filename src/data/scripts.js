@@ -10,7 +10,7 @@ export const scripts = [
     meta: [
       { icon: '🔧', label: 'Uso', value: 'node comfy-text2img.mjs --once [--id=123]', code: true },
       { icon: '⏱️', label: 'Tiempo', value: '~1 min/imagen (primera ~2 min carga modelo)' },
-      { icon: '⚠️', label: 'Límite', value: 'máx 15 imágenes por corrida (VRAM leak)' },
+      { icon: '⚠️', label: 'Límite', value: 'máx 4 imágenes por corrida (VRAM leak en la 5ta)' },
       { icon: '📱', label: 'Notifica', value: 'vía Telegram Bot al terminar batch' },
     ],
     rev: 'Pipeline: paso 4 → paso 5',
@@ -28,7 +28,7 @@ export const scripts = [
       { icon: '🔧', label: 'Uso', value: 'node comfy-img2img.mjs --once [--id=123]', code: true },
       { icon: '📐', label: 'Dimensiones', value: '1104×1472 (3:4)' },
       { icon: '⏱️', label: 'Tiempo', value: '~1 min/imagen (primera ~2 min carga modelo)' },
-      { icon: '⚠️', label: 'Límite', value: 'máx 15 imágenes por corrida (VRAM leak)' },
+      { icon: '⚠️', label: 'Límite', value: 'máx 4 imágenes por corrida (VRAM leak en la 5ta)' },
       { icon: '📱', label: 'Notifica', value: 'vía Telegram Bot al terminar batch' },
     ],
     rev: 'Pipeline: paso 7 → paso 8',
