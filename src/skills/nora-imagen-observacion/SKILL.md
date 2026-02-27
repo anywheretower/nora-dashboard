@@ -1,12 +1,12 @@
 ---
 name: nora-imagen-observacion
-description: Resolver observaciones en creatividades de IMAGEN de NORA. Detecta creatividades con observación pendiente, interpreta la corrección solicitada (imagen, textos o ambos). Si requiere nueva imagen, DUPLICA la creatividad con prompt corregido y deja en "paso 4". Si solo requiere corrección de textos, modifica directamente sin duplicar. La original queda con condición "observacion_resuelta". Para video ver nora-video-observacion.
+description: Resolver observaciones en creatividades de IMAGEN de NORA. Detecta creatividades con observación pendiente, interpreta la corrección solicitada (imagen, textos o ambos). Si requiere nueva imagen, DUPLICA la creatividad con prompt corregido y deja en "paso 4". Si solo requiere corrección de textos, modifica directamente sin duplicar. La original queda con condición "observado". Para video ver nora-video-observacion.
 id: nora-imagen-observacion
 ---
 
 # Resolución de Observaciones de Imagen — Skill de corrección de creatividades de imagen para NORA
 
-> ⚠️ **REGLA FUNDAMENTAL: NUNCA sobrescribir la creatividad original.** Siempre DUPLICAR: crear nueva entrada con el prompt corregido y marcar la original como `observacion_resuelta`. Esto preserva el historial para comparación antes/después.
+> ⚠️ **REGLA FUNDAMENTAL: NUNCA sobrescribir la creatividad original.** Siempre DUPLICAR: crear nueva entrada con el prompt corregido y marcar la original como `observado`. Esto preserva el historial para comparación antes/después.
 
 > **Última revisión:** 2026-02-23 01:30 CLT
 
@@ -136,9 +136,10 @@ Una vez creada la nueva creatividad en paso 4, ejecutar la generación de imagen
 
 | Origen | Script | Tipo |
 |--------|--------|------|
-| `original`, `referencia`, `universal`, `requerido`, `calendario` | `comfy-text2img.mjs` | Texto a imagen (Qwen 2.5) |
-| `Producto`, `Colaborador`, `Interior`, `Exterior`, `Fachada` | `comfy-img2img.mjs` | Imagen a imagen (Qwen Image Edit) |
-| `Pantalla` | `comfy-text2img.mjs --ratio=16:9` | Texto a imagen 16:9 (Qwen 2.5) |
+| `original`, `referencia`, `universal`, `requerido`, `calendario` | `comfy-text2img.mjs` | Texto a imagen 3:4 (Qwen 2.5) |
+| `Producto`, `Colaborador`, `Interior`, `Exterior`, `Fachada` | `comfy-img2img.mjs` | Imagen a imagen 3:4 (Qwen Image Edit) |
+| `Pantalla` (sin url) | `comfy-text2img-pantalla.mjs` | Texto a imagen 16:9 |
+| `Pantalla` (con url) | `comfy-img2img-pantalla.mjs` | Imagen a imagen 16:9 (pad blanco) |
 
 #### Flujo text2img / img2img:
 

@@ -245,7 +245,7 @@ export const nivel3Skills = [
       { icon: '📤', label: 'Entrega', value: '2 versiones con enfoques distintos + imágenes regeneradas' },
       { icon: '🔧', label: 'Engine', value: 'comfy-text2img / comfy-img2img según origen' },
       { icon: '🕐', label: 'Cron', value: 'por definir + bajo demanda' },
-      { icon: '📋', label: 'Escribe', value: 'creatividades — 2 nuevas: prompt, estado=paso 4, condicion=null, observacion=null. Original: condicion → observacion_resuelta, observacion → null', expandable: true },
+      { icon: '📋', label: 'Escribe', value: 'creatividades — 2 nuevas: prompt, estado=paso 4, condicion=null, observacion=null. Original: condicion → observado, observacion → null', expandable: true },
     ],
     rev: 'Rev: 2026-02-23',
     deps: '→ prompt-master',

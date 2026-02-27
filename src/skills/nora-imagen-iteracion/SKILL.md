@@ -18,7 +18,7 @@ id: nora-imagen-iteracion
 ### Filtros de activación (IMPORTANTE)
 - Solo creatividades con `condicion=para_revision`
 - **Excluir** las que ya tengan tag `iterado_r3` (agotaron sus rondas)
-- **Excluir** las que vengan de una observación resuelta (su original tenía `condicion=observacion_resuelta`)
+- **Excluir** las que vengan de una observación resuelta (su original tenía `condicion=observado`)
 - **No re-iterar loops**: si una creatividad fue generada por esta misma skill (tiene tag `iterado_rN`), solo continuar si no ha llegado a ronda 3
 
 ### Qué hace
@@ -217,8 +217,10 @@ Una vez creada la nueva creatividad en paso 4, ejecutar la generación de imagen
 
 | Origen | Script | Tipo |
 |--------|--------|------|
-| `original`, `referencia`, `universal`, `requerido`, `calendario` | `comfy-text2img.mjs` | Texto a imagen (Qwen 2.5) |
-| `Producto`, `Colaborador`, `Interior`, `Exterior`, `Fachada` | `comfy-img2img.mjs` | Imagen a imagen (Qwen Image Edit) |
+| `original`, `referencia`, `universal`, `requerido`, `calendario` | `comfy-text2img.mjs` | Texto a imagen 3:4 (Qwen 2.5) |
+| `Producto`, `Colaborador`, `Interior`, `Exterior`, `Fachada` | `comfy-img2img.mjs` | Imagen a imagen 3:4 (Qwen Image Edit) |
+
+> **Pantalla** (`origen=Pantalla`) NO pasa por iteración — solo recibe observaciones de Jorge.
 
 #### Flujo text2img / img2img:
 

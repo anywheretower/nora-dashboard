@@ -95,8 +95,7 @@ Registro de cada pieza creativa. Tabla central del pipeline.
 | `para_revision` | Lista para QA automático (iteración) o revisión humana |
 | `aprobado` | Aprobada por Jorge, no tocar |
 | `resultado_final` | Versión definitiva publicada |
-| `observado` | Jorge dejó observación, pendiente corrección |
-| `observacion_resuelta` | Original preservada, ya se creó duplicado corregido |
+| `observado` | Jorge dejó observación (pendiente o ya resuelta — la original queda siempre como "observado") |
 | `requerido` | Creada desde tabla requerimientos |
 
 ### Valores de `origen`
