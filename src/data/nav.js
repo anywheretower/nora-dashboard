@@ -8,5 +8,6 @@ export const navLinks = [
   { id: 'nivel3', label: 'N3 · QA Imagen' },
   { id: 'nivel4', label: 'N4 · Video' },
   { id: 'nivel5', label: 'N5 · QA Video' },
+  { id: 'banco', label: '🖼️ Banco' },
   { id: 'shared', label: 'Shared' },
 ]

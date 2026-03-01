@@ -138,4 +138,18 @@ export const flowSummaries = {
     cronSkills: [],
     scriptIds: [],
   },
+  'banco': {
+    label: 'Banco Imágenes',
+    icon: '🖼️',
+    description: 'Banco de imágenes de referencia publicitaria. Jorge envía imágenes, se suben a Storage, Qwen VL analiza (summary + prompt), NORA asigna etiquetas, se insertan en tabla referencia.',
+    cronSkills: [],
+    scriptIds: ['tmp-ref-analyzer'],
+  },
+  'banco-imagenes': {
+    label: '🖼️ Subida + Análisis de Referencias',
+    icon: '🖼️',
+    description: 'Flujo: imagen → upload Supabase Storage → Qwen VL vía OpenRouter genera summary (análisis visual) y prompt (recreación en inglés) → NORA asigna etiquetas por categoría → insert en tabla referencia.',
+    cronSkills: [],
+    scriptIds: ['tmp-ref-analyzer'],
+  },
 }

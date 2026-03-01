@@ -180,6 +180,19 @@ export const marcaFlows = [
   },
 ]
 
+export const bancoFlow = {
+  id: 'banco-imagenes',
+  title: 'Subida + Análisis de Referencias',
+  subtitle: 'analiza y etiqueta imágenes de referencia publicitaria',
+  note: 'Manual · Jorge envía imágenes → sube a Storage → Qwen VL analiza (summary + prompt) → NORA etiqueta → inserta en tabla referencia',
+  levels: {
+    activador: [{ type: 'input', text: 'imágenes de Jorge' }],
+    supabase: [{ type: 'script', text: 'upload Storage' }, { type: 'step', text: 'url pública' }],
+    comfy: [{ type: 'script', text: 'Qwen VL (OpenRouter)' }, { type: 'step', text: 'summary + prompt' }, { type: 'support', text: 'NORA etiquetas' }, { type: 'pub', text: 'insert referencia' }],
+    qa: [{ type: 'na', text: 'No aplica' }],
+  },
+}
+
 export const legend = [
   { text: 'input', type: 'input', label: 'fuente datos' },
   { text: 'soporte', type: 'support', label: 'skill apoyo' },
