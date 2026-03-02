@@ -103,17 +103,18 @@ export const scripts = [
   {
     id: 'tmp-ref-analyzer',
     title: 'tmp_ref_analyzer.mjs',
-    badge: 'Referencia',
+    badge: 'Banco',
     badgeClass: 'badge-support',
     status: 'active',
     cardStyle: 3,
-    description: 'Analiza imágenes de referencia con vision model, las sube a Supabase Storage y crea registro en tabla referencia. Soporta procesamiento por lote desde ./ref_inbox/.',
+    description: 'Analiza imágenes de referencia publicitaria: sube a Supabase Storage, Qwen VL (OpenRouter) genera summary + prompt, asigna etiquetas automáticas. Procesadas se mueven a ref_inbox/done/.',
     meta: [
       { icon: '🔧', label: 'Uso', value: 'node tmp_ref_analyzer.mjs [imagen1.jpg ...]', code: true },
-      { icon: '🏷️', label: 'Post', value: 'etiquetas manuales de NORA después del análisis' },
-      { icon: '🤖', label: 'Vision', value: 'OpenRouter API para análisis de imagen' },
+      { icon: '📂', label: 'Inbox', value: './ref_inbox/ → procesadas van a ./ref_inbox/done/' },
+      { icon: '🤖', label: 'Vision', value: 'Qwen VL 8B vía OpenRouter (summary + prompt + tags)' },
+      { icon: '📊', label: 'Banco', value: '175+ referencias etiquetadas' },
     ],
-    rev: 'Banco: 139+ referencias etiquetadas',
+    rev: 'Flujo: upload → Qwen VL análisis → etiquetas → insert referencia',
     deps: 'Requiere: OpenRouter API key',
   },
 
